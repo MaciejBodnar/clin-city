@@ -7,10 +7,12 @@
     @php(do_action('get_header'))
     @php(wp_head())
 
+    <link rel="stylesheet" href="https://use.typekit.net/avj8yvl.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body @php(body_class())>
+<body @php(body_class())
+    style="background-image: url('{{ get_template_directory_uri() }}/resources/images/golden-background-with-palm-tree(1).png'); background-attachment: fixed; background-size: cover; background-position: center;">
     @php(wp_body_open())
 
     <div id="app">

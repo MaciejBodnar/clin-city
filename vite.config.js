@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
-import laravel from 'laravel-vite-plugin'
+import laravel from 'laravel-vite-plugin';
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 
 export default defineConfig({
-  base: '/app/themes/sage/public/build/',
+  base: '/wordpress/wp-content/themes/clin-city/public/build/',
   plugins: [
     tailwindcss(),
     laravel({
@@ -35,4 +35,4 @@ export default defineConfig({
       '@images': '/resources/images',
     },
   },
-})
+});

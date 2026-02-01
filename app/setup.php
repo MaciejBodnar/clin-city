@@ -153,3 +153,20 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+/**
+ * Register custom routes.
+ */
+add_action('init', function () {
+    add_rewrite_rule('^welcome/?$', 'index.php?clin_route=welcome', 'top');
+    add_rewrite_rule('^team/?$', 'index.php?clin_route=team', 'top');
+    add_rewrite_rule('^rooms/?$', 'index.php?clin_route=rooms', 'top');
+    add_rewrite_rule('^treatments/?$', 'index.php?clin_route=treatments', 'top');
+
+    // flush_rewrite_rules();
+});
+
+add_filter('query_vars', function ($vars) {
+    $vars[] = 'clin_route';
+    return $vars;
+});
