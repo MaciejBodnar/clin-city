@@ -86,46 +86,47 @@
 @endphp
 
 <header class="relative">
-    <div>
-        <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 text-[11px] text-black/55 sm:px-6">
-            <div class="hidden items-center gap-2 sm:flex">
-                <span
-                    class="inline-flex h-4 w-4 items-center justify-center rounded border border-black/15 text-[10px]">?</span>
-                <span
-                    class="inline-flex h-4 w-4 items-center justify-center rounded border border-black/15 text-[10px]">?</span>
-                <span
-                    class="inline-flex h-4 w-4 items-center justify-center rounded border border-black/15 text-[10px]">?</span>
-            </div>
+    <div class="flex flex-wrap max-w-7xl mx-auto items-center justify-between gap-3 px-4 py-5 text-black/60 sm:px-6">
+        <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-6">
+                <a>
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a>
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a>
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </span>
+        </div>
 
-            <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-                <span class="inline-flex items-center gap-2">
-                    <span class="opacity-70">Whatsapp us</span>
-                    <span class="inline-block h-4 w-px bg-black/10"></span>
-                    <a class="hover:text-black/70" href="tel:+442073239534">020 7323 9534</a>
-                </span>
+        <div class="flex items-center gap-2">
 
-                <span class="hidden h-4 w-px bg-black/10 sm:inline-block"></span>
-
-                <span class="inline-flex items-center gap-2">
-                    <span class="opacity-70">Opening hours</span>
-                    <span class="inline-block h-4 w-px bg-black/10"></span>
-                    <span>Mon-Sat, 10:00am-6.30pm</span>
-                </span>
-            </div>
+            <span class="opacity-70">Whatsapp us</span>
+            <a class="hover:text-black/80 pl-2" href="tel:+442073239534">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span class="ml-2">
+                    020 7323 9534</span></a>
+            <a class="px-8">
+                <i class="fab fa-weixin"></i></a>
+            <span class="opacity-70">Opening hours</span>
+            <i class="fa-regular fa-clock"></i>
+            <span>Mon-Sat, 10:00am-6:30pm</span>
         </div>
     </div>
-    <div class="mx-auto max-w-6xl bg-white">
-        <div class="px-4 py-7 text-center sm:px-6">
+    <div class="mx-auto max-w-400 bg-white flex flex-col items-center relative">
+        <div class="px-4 py-8 text-center sm:px-6">
             <a href="{{ home_url('/') }}" class="inline-block font-serif text-[42px] tracking-[0.18em] text-[#c9b06f]">
-                CLIN<span class="inline-block -translate-y-0.5 align-middle">│</span>CITY
+                <img src="{{ get_template_directory_uri() }}/resources/images/logo-menu.png" alt="CLINICITY"
+                    class="h-12 w-auto mx-auto" />
             </a>
         </div>
 
-        <div">
-            <div class="relative flex items-center justify-between gap-6 px-4 py-5
-                sm:px-6">
-                <nav class="relative">
-                    <ul class="flex flex-wrap items-center gap-x-8 gap-y-2 text-[12px] tracking-[0.18em] text-black/55">
+        <div class="w-full max-w-6xl static">
+            <div class="static flex items-center justify-between gap-6 px-4 w-full sm:px-6">
+                <nav class="static">
+                    <ul class="flex flex-wrap items-center gap-x-8 gap-y-2 uppercase text-black/55">
                         @foreach ($top as $item)
                             @php
                                 $id = (int) $item->ID;
@@ -140,35 +141,30 @@
                                     !empty($item->current_item_parent);
                             @endphp
 
-                            {{-- IMPORTANT: "static" so the mega panel can be positioned relative to <nav class="relative"> --}}
                             <li class="group static">
                                 <a href="{{ $url }}"
-                                    class="relative inline-flex items-center py-2 transition hover:text-black/75 {{ $isCurrent ? 'text-black/75' : '' }}">
+                                    class="relative inline-flex items-center py-8 transition hover:text-black/75 {{ $isCurrent ? 'text-black/75' : '' }}">
                                     {{ $title }}
 
-                                    {{-- The triangle pointer UNDER the menu item: only if it has submenu --}}
                                     @if ($openable)
                                         <span
-                                            class="pointer-events-none absolute -bottom-4.5 left-1/2 hidden h-0 w-0 -translate-x-1/2
+                                            class="pointer-events-none absolute -bottom-0.5 left-1/2 hidden h-0 w-0 -translate-x-1/2
                      border-l-8 border-r-8 border-t-8
                      border-l-transparent border-r-transparent border-t-[#d7cfbf]
                      group-hover:block group-focus-within:block {{ $isCurrent ? 'block' : '' }}"></span>
                                     @endif
                                 </a>
 
-                                {{-- MEGA PANEL (only if has submenu) --}}
                                 @if ($openable)
                                     <div
-                                        class="pointer-events-none absolute inset-x-0 top-full z-50 mt-5
-                   opacity-0 transition duration-200
-                   group-hover:pointer-events-auto group-hover:opacity-100
-                   group-focus-within:pointer-events-auto group-focus-within:opacity-100">
-                                        {{-- This inner wrapper matches the menu/card width --}}
-                                        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-                                            <div
-                                                class="border border-black/10 bg-[#d7cfbf] px-10 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                                        class="pointer-events-none absolute inset-x-0 w-full left-0 top-full z-50
+                                            opacity-0 transition duration-200
+                                            group-hover:pointer-events-auto group-hover:opacity-100
+                                            group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+                                        <div
+                                            class="w-full border border-black/10 bg-[#d7cfbf] shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                                            <div class="mx-auto w-full max-w-6xl px-10 py-10">
 
-                                                {{-- ===== Treatments mega layout (3 columns) ===== --}}
                                                 @if ($k === 'treatments')
                                                     @php $cols = $children[$id] ?? []; @endphp
 
@@ -201,8 +197,6 @@
                                                             </div>
                                                         @endforeach
                                                     </div>
-
-                                                    {{-- ===== Collaborate mega layout (4 blocks) ===== --}}
                                                 @elseif ($k === 'collaborate')
                                                     @php $blocks = $children[$id] ?? []; @endphp
 
@@ -227,8 +221,6 @@
                                                             @endforeach
                                                         </div>
                                                     </div>
-
-                                                    {{-- ===== Default dropdown ===== --}}
                                                 @else
                                                     @php $subs = $children[$id] ?? []; @endphp
 
@@ -270,11 +262,10 @@
 
 
                 <a href="{{ $ctaUrl }}"
-                    class="shrink-0 rounded-full bg-[#c9b06f] px-10 py-3 text-[12px] font-medium tracking-[0.14em] text-white
-                   shadow-[0_10px_20px_rgba(0,0,0,0.12)] hover:brightness-95 transition">
+                    class="shrink-0 rounded-full bg-[#c9b06f] hover:bg-[#c9b06f]/70 px-10 py-3 text-white">
                     BOOK YOUR CONSULTATION
                 </a>
             </div>
-    </div>
+        </div>
     </div>
 </header>

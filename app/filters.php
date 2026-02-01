@@ -38,4 +38,8 @@ add_action('template_redirect', function () {
         echo \Roots\view('treatments-template')->render();
         exit;
     }
+    if ($route === 'contact') {
+        echo \Roots\view('contact-template')->render();
+        exit;
+    }
 });

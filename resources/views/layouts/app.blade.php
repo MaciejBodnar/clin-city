@@ -8,6 +8,7 @@
     @php(wp_head())
 
     <link rel="stylesheet" href="https://use.typekit.net/avj8yvl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -16,7 +17,9 @@
     @php(wp_body_open())
 
     <div id="app">
-        @include('sections.header')
+        @section('header')
+            @include('sections.header')
+        @show
 
         <main id="main" class="main">
             @yield('content')

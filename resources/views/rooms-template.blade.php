@@ -46,31 +46,27 @@
     @endphp
 
     <div>
-        {{-- HERO CARD --}}
-        <section class="px-4 sm:px-6 sm:pt-8">
-            <div class="mx-auto w-full max-w-6xl overflow-hidden bg-white">
-                {{-- Room hero (text left, image right) --}}
+        <section class="px-4 sm:px-6">
+            <div class="mx-auto w-full max-w-400 overflow-hidden bg-white pt-5">
+
                 <div class="grid gap-0 lg:grid-cols-2">
-                    <div class="bg-white px-8 py-10 sm:px-10">
-                        <p class="text-[10px] tracking-[0.28em] text-[#bda66a]">
-                            COLLABORATE
-                        </p>
+                    <div class="bg-white px-8 py-10 sm:px-10 flex flex-col items-center justify-center">
+                        <div>
+                            <p class="text-[18px] tracking-[0.28em] text-[#C7B276] uppercase">
+                                WELCOME TO CLINCITY LONDON
+                            </p>
 
-                        <h1 class="mt-3 font-serif text-[34px] tracking-widest text-black/70 sm:text-[40px]">
-                            BASIC ROOM
-                        </h1>
+                            <h1 class="mt-3 uppercase font-serif text-[48px] tracking-widest text-[#705F40] sm:text-[40px]">
+                                MEET THE TEAM
+                            </h1>
 
-                        <div class="mt-5 flex gap-6">
-                            <div class="w-px bg-black/10"></div>
-                            <div class="max-w-[46ch] space-y-4 text-[12px] leading-6 text-black/45">
-                                <p>
-                                    Our Basic Room offers a functional and comfortable setting for consultations or simple
-                                    treatments.
-                                    Featuring a desk, chair, sink, and tap, it’s equipped with all the essentials like soap
-                                    dispensers and hand gel.
-                                </p>
-                                <p>
-                                    Perfect for those seeking a no-frills, professional space for lighter services.
+                            <div class="mt-5 flex gap-15">
+                                <div class="w-0.5 bg-[#DED6C7]"></div>
+                                <p class="max-w-95 text-[18px] tracking-wide leading-8 text-[#705F40]">
+                                    Where your aesthetic journey to excellence starts with our skilled team.
+                                    Guided by leaders in cosmetic and aesthetic treatments, our committed experts are here
+                                    to
+                                    make your experience transformative and peaceful.
                                 </p>
                             </div>
                         </div>
@@ -78,48 +74,42 @@
 
                     <div class="bg-white">
                         <div class="aspect-video sm:aspect-3/2 lg:aspect-video">
-                            {{-- <img src="@asset($heroImage)" alt="Basic Room" class="h-full w-full object-cover"
-                                loading="lazy" /> --}}
+                            <img src="{{ get_template_directory_uri() }}/resources/images/room-basic.png"
+                                alt="Clincity Team" class="h-full w-full object-cover" loading="lazy" />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        {{-- FEATURES / ASSETS --}}
         <section class="px-4 pb-14 pt-12 sm:px-6 sm:pb-16">
-            <div class="mx-auto max-w-6xl">
+            <div class="mx-auto max-w-7xl">
                 <div class="grid gap-10 lg:grid-cols-2 lg:gap-14">
-                    {{-- Left column --}}
                     <div>
-                        <h2 class="font-serif text-[24px] tracking-[0.08em] text-black/60 sm:text-[28px]">
+                        <h2 class="font-serif text-[39px] text-black/60 sm:text-[39px]">
                             Room Features &amp; Assets
                         </h2>
-                        <div class="mt-4 h-px w-full bg-black/10"></div>
+                        <div class="mt-10 h-px w-full bg-black/10"></div>
 
-                        <div class="mt-8 grid gap-10 sm:grid-cols-2">
-                            {{-- Assets list --}}
+                        <div class="mt-10 grid gap-10 sm:grid-cols-2">
                             <div>
-                                <p class="text-[11px] font-medium tracking-[0.12em] text-black/55">Assets</p>
-                                <ul class="mt-4 space-y-2 text-[11px] text-black/45">
+                                <p class="text-[18px] font-medium tracking-[0.12em] text-black/55">Assets</p>
+                                <ul class="mt-4 space-y-2 text-[18px] text-black/45">
                                     @foreach ($assets as $item)
-                                        <li class="flex gap-3">
-                                            <span
-                                                class="mt-1.5 inline-block h-0.75 w-0.75 rounded-full bg-[#c9b06f]"></span>
+                                        <li class="flex gap-3 items-center">
+                                            <span class="inline-block h-1 w-1 rounded-full bg-[#c9b06f]"></span>
                                             <span>{{ $item }}</span>
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
 
-                            {{-- Key features list --}}
                             <div>
-                                <p class="text-[11px] font-medium tracking-[0.12em] text-black/55">Key Features</p>
-                                <ul class="mt-4 space-y-2 text-[11px] text-black/45">
+                                <p class="text-[18px] font-medium tracking-[0.12em] text-black/55">Key Features</p>
+                                <ul class="mt-4 space-y-2 text-[18px] text-black/45">
                                     @foreach ($keyFeatures as $item)
-                                        <li class="flex gap-3">
-                                            <span
-                                                class="mt-1.5 inline-block h-0.75 w-0.75 rounded-full bg-[#c9b06f]"></span>
+                                        <li class="flex gap-3 items-center">
+                                            <span class="inline-block h-1 w-1 rounded-full bg-[#c9b06f]"></span>
                                             <span>{{ $item }}</span>
                                         </li>
                                     @endforeach
@@ -128,22 +118,20 @@
                         </div>
                     </div>
 
-                    {{-- Right column --}}
                     <div>
-                        <h2 class="font-serif text-[24px] tracking-[0.08em] text-black/60 sm:text-[28px]">
+                        <h2 class="font-serif text-[39px] text-black/60 sm:text-[39px]">
                             Additional Facilities &amp; Services:
                         </h2>
-                        <div class="mt-4 h-px w-full bg-black/10"></div>
+                        <div class="mt-10 h-px w-full bg-black/10"></div>
 
-                        <div class="mt-8 grid gap-10 sm:grid-cols-2">
+                        <div class="mt-10 grid gap-10 sm:grid-cols-2">
                             <div>
-                                <p class="text-[11px] font-medium tracking-[0.12em] text-black/55">Additional Facilities:
+                                <p class="text-[18px] font-medium tracking-[0.12em] text-black/55">Additional Facilities:
                                 </p>
-                                <ul class="mt-4 space-y-2 text-[11px] text-black/45">
+                                <ul class="mt-4 space-y-2 text-[18px] text-black/45">
                                     @foreach ($additionalFacilities as $item)
-                                        <li class="flex gap-3">
-                                            <span
-                                                class="mt-1.5 inline-block h-0.75 w-0.75 rounded-full bg-[#c9b06f]"></span>
+                                        <li class="flex gap-3 items-center">
+                                            <span class="inline-block h-1 w-1 rounded-full bg-[#c9b06f]"></span>
                                             <span>{{ $item }}</span>
                                         </li>
                                     @endforeach
@@ -151,12 +139,11 @@
                             </div>
 
                             <div>
-                                <p class="text-[11px] font-medium tracking-[0.12em] text-black/55">&nbsp;</p>
-                                <ul class="mt-4 space-y-2 text-[11px] text-black/45">
+                                <p class="text-[18px] font-medium tracking-[0.12em] text-black/55">&nbsp;</p>
+                                <ul class="mt-4 space-y-2 text-[18px] text-black/45">
                                     @foreach ($additionalServices as $item)
-                                        <li class="flex gap-3">
-                                            <span
-                                                class="mt-1.5 inline-block h-0.75 w-0.75 rounded-full bg-[#c9b06f]"></span>
+                                        <li class="flex gap-3 items-center">
+                                            <span class="inline-block h-1 w-1 rounded-full bg-[#c9b06f]"></span>
                                             <span>{{ $item }}</span>
                                         </li>
                                     @endforeach
@@ -166,13 +153,10 @@
                     </div>
                 </div>
 
-                {{-- CTA --}}
-                <div class="mt-14 flex justify-center">
-                    <a href="/rent-a-room/"
-                        class="inline-flex items-center justify-center rounded-full bg-[#c9b06f] px-12 py-2 text-[10px] font-medium
-                   tracking-[0.18em] text-white shadow-[0_10px_20px_rgba(0,0,0,0.12)]
-                   hover:brightness-95 transition">
-                        RENT A ROOM
+                <div class="mt-24 flex justify-center">
+                    <a href=""
+                        class="min-w-71.25 rounded-full text-center bg-[#c9b06f] uppercase hover:bg-[#c9b06f]/70 px-10 py-3 text-white">
+                        Rent a room
                     </a>
                 </div>
             </div>
