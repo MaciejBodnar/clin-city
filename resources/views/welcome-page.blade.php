@@ -8,13 +8,13 @@
 @endsection
 
 @section('content')
-    <main class="min-h-screen">
-        <div class="min-h-screen px-4 sm:px-6">
+    <main class="">
+        <div class="px-4 sm:px-6">
             <section class="mx-auto w-full max-w-400 overflow-hidden rounded-none ">
                 <div
                     class="flex flex-wrap max-w-7xl mx-auto items-center justify-between gap-3 px-4 py-5 text-black/60 sm:px-6">
                     <div class="flex items-center gap-2">
-                        <span class="inline-flex items-center gap-6">
+                        <span class="md:inline-flex items-center gap-6 hidden">
                             <a>
                                 <i class="fa-brands fa-facebook-f"></i>
                             </a>
@@ -25,20 +25,22 @@
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </span>
+                        {{-- <span class="text-[30px]"><i class="fa-solid fa-bars"></i></span> --}}
                     </div>
 
                     <div class="flex items-center gap-2">
-
-                        <span class="opacity-70">Whatsapp us</span>
-                        <a class="hover:text-black/80 pl-2" href="tel:+442073239534">
+                        <span class="opacity-70 hidden md:flex">Whatsapp us</span>
+                        <a class="hover:text-black/80 pl-2 text-[30px] md:text-base" href="tel:+442073239534">
                             <i class="fa-brands fa-whatsapp"></i>
-                            <span class="ml-2">
+                            <span class="ml-2 hidden md:inline-block">
                                 020 7323 9534</span></a>
-                        <a class="px-8">
+                        <a class="px-8 text-[30px] md:text-base">
                             <i class="fab fa-weixin"></i></a>
-                        <span class="opacity-70">Opening hours</span>
-                        <i class="fa-regular fa-clock"></i>
-                        <span>Mon-Sat, 10:00am-6:30pm</span>
+                        <div class="hidden md:inline-block">
+                            <span class="opacity-70">Opening hours</span>
+                            <i class="fa-regular fa-clock"></i>
+                            <span>Mon-Sat, 10:00am-6:30pm</span>
+                        </div>
                     </div>
                 </div>
 
@@ -89,7 +91,7 @@
                         </nav>
 
                         <div class="mt-12">
-                            <a href="{{ home_url('/home') }}" id="enter-site"
+                            <a href="{{ home_url('/') }}" id="enter-site"
                                 class="inline-flex items-center justify-center rounded-full uppercase bg-white/90 px-7 py-3 font-medium tracking-[0.2em] text-black/70 backdrop-blur
                      hover:bg-white hover:text-black/80 transition">
                                 ENTER OUR WEBSITE

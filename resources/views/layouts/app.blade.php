@@ -24,8 +24,12 @@
         <main id="main" class="main">
             @yield('content')
         </main>
+        @php($route = get_query_var('clin_route'))
+        @if ($route !== 'welcome')
+            @include('sections.footer')
+        @endif
 
-        @include('sections.footer')
+
     </div>
 
     @php(do_action('get_footer'))

@@ -148,10 +148,9 @@
 
                                     @if ($openable)
                                         <span
-                                            class="pointer-events-none absolute -bottom-0.5 left-1/2 hidden h-0 w-0 -translate-x-1/2
-                     border-l-8 border-r-8 border-t-8
-                     border-l-transparent border-r-transparent border-t-[#d7cfbf]
-                     group-hover:block group-focus-within:block {{ $isCurrent ? 'block' : '' }}"></span>
+                                            class="absolute -bottom-2 text-[#705F40] left-1/2 hidden -translate-x-1/2 group-hover:block group-focus-within:block {{ $isCurrent ? 'block' : '' }}">
+                                            &#9206;
+                                        </span>
                                     @endif
                                 </a>
 
@@ -162,7 +161,7 @@
                                             group-hover:pointer-events-auto group-hover:opacity-100
                                             group-focus-within:pointer-events-auto group-focus-within:opacity-100">
                                         <div
-                                            class="w-full border border-black/10 bg-[#d7cfbf] shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                                            class="w-full border-t-[#705F40] border-b-0 border-x-0 border-2 bg-[#d7cfbf]">
                                             <div class="mx-auto w-full max-w-6xl px-10 py-10">
 
                                                 @if ($k === 'treatments')
@@ -182,11 +181,9 @@
                                                                 </p>
 
                                                                 <ul
-                                                                    class="mt-5 space-y-3 text-[14px] tracking-[0.02em] text-black/50">
+                                                                    class="submenu-item mt-5 space-y-3 text-[14px] tracking-[0.02em] text-black/50">
                                                                     @foreach ($links as $lnk)
-                                                                        <li class="flex items-start gap-3">
-                                                                            <span
-                                                                                class="mt-2 inline-block h-1 w-1 rounded-full bg-black/35"></span>
+                                                                        <li class="flex items-start gap-3 submenu-item">
                                                                             <a href="{{ $lnk->url }}"
                                                                                 class="hover:text-black/70 transition">
                                                                                 {{ $lnk->title }}

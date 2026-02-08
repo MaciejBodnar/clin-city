@@ -15,3 +15,7 @@ a {
 .wpcf7-form .wpcf7-response-output {
   display: none !important;
 }
+
+ul li.submenu-item::before {
+  content: "▶ ";
+}

@@ -22,7 +22,6 @@
     <section>
         <div class="mx-auto max-w-6xl px-4 pb-20 pt-12 sm:px-6 sm:pt-14">
             <div class="bg-transparent">
-                {{-- Title --}}
                 <h1 class="font-serif text-[42px] tracking-widest text-black/60 sm:text-[56px]">
                     COLLABORATE
                 </h1>
@@ -32,7 +31,6 @@
                     We can't wait to hear from you!
                 </p>
 
-                {{-- Form wrapper (styled to match: thin lines, transparent background) --}}
                 <div class="mt-12">
                     <div class="contact-form-skin">
                         {!! do_shortcode($shortcode) !!}
