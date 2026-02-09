@@ -1,4 +1,4 @@
-@php
+<?php
     $locations = get_nav_menu_locations();
     $policyMenuId = $locations['footer_policy'] ?? null;
     $policyItems = $policyMenuId ? wp_get_nav_menu_items($policyMenuId) : [];
@@ -16,7 +16,7 @@
         ['label' => 'TikTok', 'url' => '#', 'icon' => 'fa-brands fa-tiktok'],
         ['label' => 'Instagram', 'url' => '#', 'icon' => 'fa-brands fa-instagram'],
     ];
-@endphp
+?>
 
 <footer>
     <div class="mx-auto max-w-400 items-center flex flex-col justify-center px-4 pb-14 pt-10 sm:px-6">
@@ -26,12 +26,12 @@
             </p>
 
             <div class="flex items-center gap-8 md:gap-30 text-[#C7B276]/80">
-                @foreach ($social as $s)
-                    <a href="{{ $s['url'] }}" class="text-[34px] transition hover:text-[#bda66a]"
-                        aria-label="{{ $s['label'] }}" target="_blank" rel="noopener">
-                        <i class="{{ $s['icon'] }}"></i>
+                <?php $__currentLoopData = $social; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <a href="<?php echo e($s['url']); ?>" class="text-[34px] transition hover:text-[#bda66a]"
+                        aria-label="<?php echo e($s['label']); ?>" target="_blank" rel="noopener">
+                        <i class="<?php echo e($s['icon']); ?>"></i>
                     </a>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
 
@@ -39,8 +39,8 @@
 
         <div class="max-w-6xl w-full mt-12 grid gap-10 text-black/55 lg:grid-cols-[1fr_1fr_1fr] max-md:text-center">
             <div class="flex items-start justify-center lg:justify-start">
-                <a href="{{ home_url('/') }}" class="font-serif text-[42px] tracking-[0.18em] text-[#c9b06f]">
-                    <img src="{{ get_template_directory_uri() }}/resources/images/logo-menu.png" alt="CLINICITY"
+                <a href="<?php echo e(home_url('/')); ?>" class="font-serif text-[42px] tracking-[0.18em] text-[#c9b06f]">
+                    <img src="<?php echo e(get_template_directory_uri()); ?>/resources/images/logo-menu.png" alt="CLINICITY"
                         class="h-12" />
                 </a>
             </div>
@@ -64,13 +64,14 @@
             </div>
 
             <div class="space-y-3 leading-6">
-                @foreach ($policyItems as $p)
+                <?php $__currentLoopData = $policyItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <p>
-                        <a href="{{ $p->url }}" class="hover:text-black/70 transition">
-                            {{ $p->title }}
+                        <a href="<?php echo e($p->url); ?>" class="hover:text-black/70 transition">
+                            <?php echo e($p->title); ?>
+
                         </a>
                     </p>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
 
@@ -80,3 +81,4 @@
         </div>
     </div>
 </footer>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/wordpress/wp-content/themes/clin-city/resources/views/sections/footer.blade.php ENDPATH**/ ?>

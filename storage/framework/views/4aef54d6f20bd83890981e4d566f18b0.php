@@ -1,16 +1,9 @@
-{{--
-  Template Name: Contact
-  Template Post Type: page
---}}
-
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section>
         <div class="mx-auto max-w-7xl px-4 pb-20 pt-12 sm:px-6 sm:pt-14">
             <div class="bg-transparent">
                 <h1 class="font-serif text-[42px] tracking-widest text-black/60 sm:text-[56px]">
-                    {{ $contact['page']['title'] }}</h1>
+                    <?php echo e($contact['page']['title']); ?></h1>
                 </h1>
 
                 <p class="mt-4 max-w-3xl text-[13px] leading-7 text-black/45">
@@ -20,7 +13,8 @@
 
                 <div class="mt-12">
                     <div class="contact-form-skin">
-                        {!! do_shortcode('[contact-form-7 id="6f91723" title="Contact form 1"]') !!}
+                        <?php echo do_shortcode('[contact-form-7 id="6f91723" title="Contact form 1"]'); ?>
+
                     </div>
                 </div>
             </div>
@@ -161,4 +155,6 @@
             padding: 10px 0 0;
         }
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/wordpress/wp-content/themes/clin-city/resources/views/contact-template.blade.php ENDPATH**/ ?>

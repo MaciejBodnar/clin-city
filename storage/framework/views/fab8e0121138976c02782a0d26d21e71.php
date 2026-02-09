@@ -1,14 +1,8 @@
-{{--
-  Template Name: Front Page
---}}
+<?php $__env->startSection('header'); ?>
+<?php $__env->stopSection(); ?>
 
-@extends('layouts.app')
-
-@section('header')
-@endsection
-
-@section('content')
-    @php
+<?php $__env->startSection('content'); ?>
+    <?php
         $mobileMenuOpen = false;
 
         $nav = [
@@ -108,7 +102,7 @@
         };
 
         $ctaUrl = '/book/';
-    @endphp
+    ?>
 
     <div>
         <header class="relative m-3 md:m-0">
@@ -119,11 +113,11 @@
                         class="flex flex-wrap max-w-7xl mx-auto items-center justify-between gap-3 px-4 py-5 text-black/60 sm:px-6">
                         <div class="flex items-center gap-2 max-md:w-full">
                             <span class="hidden md:inline-flex items-center gap-6">
-                                @foreach ($front['topbar']['social'] as $social)
-                                    <a href="{{ $social['url'] }}" class="hover:text-black/80">
-                                        <i class="{{ $social['icon'] }}"></i>
+                                <?php $__currentLoopData = $front['topbar']['social']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <a href="<?php echo e($social['url']); ?>" class="hover:text-black/80">
+                                        <i class="<?php echo e($social['icon']); ?>"></i>
                                     </a>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </span>
                             <span class="md:hidden flex justify-between w-full items-center">
@@ -141,16 +135,16 @@
 
                         <div class="hidden md:flex items-center gap-2">
 
-                            <span class="opacity-70">{{ $front['topbar']['whatsapp_label'] }}</span>
-                            <a class="hover:text-black/80 pl-2" href="tel:{{ $front['topbar']['whatsapp_tel'] }}">
+                            <span class="opacity-70"><?php echo e($front['topbar']['whatsapp_label']); ?></span>
+                            <a class="hover:text-black/80 pl-2" href="tel:<?php echo e($front['topbar']['whatsapp_tel']); ?>">
                                 <i class="fa-brands fa-whatsapp"></i>
                                 <span class="ml-2">
-                                    {{ $front['topbar']['whatsapp_phone'] }}</span></a>
+                                    <?php echo e($front['topbar']['whatsapp_phone']); ?></span></a>
                             <a class="px-8">
                                 <i class="fab fa-weixin"></i></a>
-                            <span class="opacity-70">{{ $front['topbar']['hours_label'] }}</span>
+                            <span class="opacity-70"><?php echo e($front['topbar']['hours_label']); ?></span>
                             <i class="fa-regular fa-clock"></i>
-                            <span>{{ $front['topbar']['hours_text'] }}</span>
+                            <span><?php echo e($front['topbar']['hours_text']); ?></span>
                         </div>
                     </div>
 
@@ -174,77 +168,81 @@
 
                         <nav class="p-6 overflow-y-auto flex-1">
                             <ul class="space-y-1">
-                                @foreach ($top as $item)
-                                    @php
+                                <?php $__currentLoopData = $top; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
                                         $id = (int) $item->ID;
                                         $title = $item->title;
                                         $url = $item->url;
                                         $openable = $hasChildren($id);
                                         $itemChildren = $children[$id] ?? [];
-                                    @endphp
+                                    ?>
 
-                                    @if ($openable)
+                                    <?php if($openable): ?>
                                         <li x-data="{ open: false }" class="border-b border-black/5">
                                             <button @click="open = !open"
                                                 class="flex w-full items-center justify-between px-4 py-3 text-black/60 hover:bg-black/5 transition rounded">
-                                                <span class="font-medium">{{ $title }}</span>
+                                                <span class="font-medium"><?php echo e($title); ?></span>
                                                 <i class="fa-solid fa-chevron-right" :class="{ 'rotate-90': open }"
                                                     class="transition"></i>
                                             </button>
 
                                             <div x-show="open" class="bg-black/2.5 pl-4">
                                                 <ul class="space-y-1 py-2">
-                                                    @foreach ($itemChildren as $child)
-                                                        @php $childId = (int) $child->ID; @endphp
+                                                    <?php $__currentLoopData = $itemChildren; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php $childId = (int) $child->ID; ?>
                                                         <li>
-                                                            <a href="{{ $child->url }}"
+                                                            <a href="<?php echo e($child->url); ?>"
                                                                 class="block px-4 py-2 text-sm text-black/50 hover:text-black/75 transition">
-                                                                {{ $child->title }}
+                                                                <?php echo e($child->title); ?>
+
                                                             </a>
 
-                                                            @php $subChildren = $children[$childId] ?? []; @endphp
-                                                            @if (!empty($subChildren))
+                                                            <?php $subChildren = $children[$childId] ?? []; ?>
+                                                            <?php if(!empty($subChildren)): ?>
                                                                 <ul class="ml-4 space-y-1 border-l border-black/10 pl-4">
-                                                                    @foreach ($subChildren as $sub)
+                                                                    <?php $__currentLoopData = $subChildren; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <li>
-                                                                            <a href="{{ $sub->url }}"
+                                                                            <a href="<?php echo e($sub->url); ?>"
                                                                                 class="block py-1 text-xs text-black/40 hover:text-black/60 transition">
-                                                                                {{ $sub->title }}
+                                                                                <?php echo e($sub->title); ?>
+
                                                                             </a>
                                                                         </li>
-                                                                    @endforeach
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                 </ul>
-                                                            @endif
+                                                            <?php endif; ?>
                                                         </li>
-                                                    @endforeach
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </ul>
                                             </div>
                                         </li>
-                                    @else
+                                    <?php else: ?>
                                         <li>
-                                            <a href="{{ $url }}"
+                                            <a href="<?php echo e($url); ?>"
                                                 class="block px-4 py-3 font-medium text-black/60 hover:bg-black/5 transition rounded"
                                                 @click="mobileMenuOpen = false">
-                                                {{ $title }}
+                                                <?php echo e($title); ?>
+
                                             </a>
                                         </li>
-                                    @endif
-                                @endforeach
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </nav>
 
                         <div class="border-t border-black/10 p-6 space-y-3 shrink-0">
-                            <a href="{{ $front['header']['cta_url'] }}" @click="mobileMenuOpen = false"
+                            <a href="<?php echo e($front['header']['cta_url']); ?>" @click="mobileMenuOpen = false"
                                 class="block w-full rounded-full bg-[#c9b06f] hover:bg-[#c9b06f]/70 px-4 py-3 text-center text-white transition">
-                                {{ $front['header']['cta_text'] }}
+                                <?php echo e($front['header']['cta_text']); ?>
+
                             </a>
                         </div>
                     </div>
 
                     <div class="mx-auto max-w-400 bg-white flex flex-col items-center relative">
-                        <a href="{{ home_url('/') }}">
-                            <img src="{{ $front['header']['logo'] }}" alt="CLINICITY" class="hidden md:block" />
-                            <img src="{{ $front['header']['logo_mobile'] }}" alt="CLINICITY" class="md:hidden" />
+                        <a href="<?php echo e(home_url('/')); ?>">
+                            <img src="<?php echo e($front['header']['logo']); ?>" alt="CLINICITY" class="hidden md:block" />
+                            <img src="<?php echo e($front['header']['logo_mobile']); ?>" alt="CLINICITY" class="md:hidden" />
                         </a>
 
                         <div class="w-full max-w-6xl">
@@ -252,8 +250,8 @@
                                 class="relative hidden md:flex items-center justify-between gap-6 px-4 py-4 w-full sm:px-6">
                                 <nav class="relative">
                                     <ul class="flex flex-wrap items-center gap-x-8 gap-y-2 uppercase text-black/55">
-                                        @foreach ($top as $item)
-                                            @php
+                                        <?php $__currentLoopData = $top; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php
                                                 $id = (int) $item->ID;
                                                 $title = $item->title;
                                                 $url = $item->url;
@@ -264,23 +262,24 @@
                                                     !empty($item->current) ||
                                                     !empty($item->current_item_ancestor) ||
                                                     !empty($item->current_item_parent);
-                                            @endphp
+                                            ?>
 
                                             <li class="group static">
-                                                <a href="{{ $url }}"
-                                                    class="relative inline-flex items-center py-2 transition hover:text-black/75 {{ $isCurrent ? 'text-black/75' : '' }}">
-                                                    {{ $title }}
+                                                <a href="<?php echo e($url); ?>"
+                                                    class="relative inline-flex items-center py-2 transition hover:text-black/75 <?php echo e($isCurrent ? 'text-black/75' : ''); ?>">
+                                                    <?php echo e($title); ?>
 
-                                                    @if ($openable)
+
+                                                    <?php if($openable): ?>
                                                         <span
                                                             class="pointer-events-none absolute -bottom-4.5 left-1/2 hidden h-0 w-0 -translate-x-1/2
                      border-l-8 border-r-8 border-t-8
                      border-l-transparent border-r-transparent border-t-[#d7cfbf]
-                     group-hover:block group-focus-within:block {{ $isCurrent ? 'block' : '' }}"></span>
-                                                    @endif
+                     group-hover:block group-focus-within:block <?php echo e($isCurrent ? 'block' : ''); ?>"></span>
+                                                    <?php endif; ?>
                                                 </a>
 
-                                                @if ($openable)
+                                                <?php if($openable): ?>
                                                     <div
                                                         class="pointer-events-none absolute inset-x-0 top-full z-50 mt-5
                    opacity-0 transition duration-200
@@ -290,40 +289,42 @@
                                                             <div
                                                                 class="border border-black/10 bg-[#d7cfbf] px-10 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
 
-                                                                @if ($k === 'treatments')
-                                                                    @php $cols = $children[$id] ?? []; @endphp
+                                                                <?php if($k === 'treatments'): ?>
+                                                                    <?php $cols = $children[$id] ?? []; ?>
 
                                                                     <div class="grid gap-12 lg:grid-cols-3">
-                                                                        @foreach ($cols as $col)
-                                                                            @php
+                                                                        <?php $__currentLoopData = $cols; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $col): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <?php
                                                                                 $colId = (int) $col->ID;
                                                                                 $links = $children[$colId] ?? [];
-                                                                            @endphp
+                                                                            ?>
 
                                                                             <div>
                                                                                 <p
                                                                                     class="text-[13px] font-medium tracking-[0.12em] text-black/55">
-                                                                                    {{ $col->title }}
+                                                                                    <?php echo e($col->title); ?>
+
                                                                                 </p>
 
                                                                                 <ul
                                                                                     class="mt-5 space-y-3 text-[14px] tracking-[0.02em] text-black/50">
-                                                                                    @foreach ($links as $lnk)
+                                                                                    <?php $__currentLoopData = $links; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lnk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                                         <li class="flex items-start gap-3">
                                                                                             <span
                                                                                                 class="mt-2 inline-block h-1 w-1 rounded-full bg-black/35"></span>
-                                                                                            <a href="{{ $lnk->url }}"
+                                                                                            <a href="<?php echo e($lnk->url); ?>"
                                                                                                 class="hover:text-black/70 transition">
-                                                                                                {{ $lnk->title }}
+                                                                                                <?php echo e($lnk->title); ?>
+
                                                                                             </a>
                                                                                         </li>
-                                                                                    @endforeach
+                                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                                 </ul>
                                                                             </div>
-                                                                        @endforeach
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                     </div>
-                                                                @elseif ($k === 'collaborate')
-                                                                    @php $blocks = $children[$id] ?? []; @endphp
+                                                                <?php elseif($k === 'collaborate'): ?>
+                                                                    <?php $blocks = $children[$id] ?? []; ?>
 
                                                                     <div>
                                                                         <h3
@@ -332,64 +333,69 @@
                                                                         </h3>
 
                                                                         <div class="mt-8 grid gap-10 lg:grid-cols-4">
-                                                                            @foreach ($blocks as $b)
-                                                                                <a href="{{ $b->url }}"
+                                                                            <?php $__currentLoopData = $blocks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                <a href="<?php echo e($b->url); ?>"
                                                                                     class="block">
                                                                                     <p
                                                                                         class="text-[13px] font-semibold tracking-widest text-black/55">
-                                                                                        {{ $b->title }}
+                                                                                        <?php echo e($b->title); ?>
+
                                                                                     </p>
                                                                                     <p
                                                                                         class="mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
-                                                                                        {{ $b->description }}
+                                                                                        <?php echo e($b->description); ?>
+
                                                                                     </p>
                                                                                 </a>
-                                                                            @endforeach
+                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                         </div>
                                                                     </div>
-                                                                @else
-                                                                    @php $subs = $children[$id] ?? []; @endphp
+                                                                <?php else: ?>
+                                                                    <?php $subs = $children[$id] ?? []; ?>
 
                                                                     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                                                                        @foreach ($subs as $sub)
+                                                                        <?php $__currentLoopData = $subs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                             <div>
-                                                                                <a href="{{ $sub->url }}"
+                                                                                <a href="<?php echo e($sub->url); ?>"
                                                                                     class="text-[13px] font-medium tracking-[0.12em] text-black/55 hover:text-black/70">
-                                                                                    {{ $sub->title }}
+                                                                                    <?php echo e($sub->title); ?>
+
                                                                                 </a>
 
-                                                                                @php $subChildren = $children[(int)$sub->ID] ?? []; @endphp
-                                                                                @if (!empty($subChildren))
+                                                                                <?php $subChildren = $children[(int)$sub->ID] ?? []; ?>
+                                                                                <?php if(!empty($subChildren)): ?>
                                                                                     <ul
                                                                                         class="mt-4 space-y-2 text-[14px] text-black/45">
-                                                                                        @foreach ($subChildren as $sc)
+                                                                                        <?php $__currentLoopData = $subChildren; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                                             <li>
-                                                                                                <a href="{{ $sc->url }}"
+                                                                                                <a href="<?php echo e($sc->url); ?>"
                                                                                                     class="hover:text-black/70 transition">
-                                                                                                    {{ $sc->title }}
+                                                                                                    <?php echo e($sc->title); ?>
+
                                                                                                 </a>
                                                                                             </li>
-                                                                                        @endforeach
+                                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                                     </ul>
-                                                                                @endif
+                                                                                <?php endif; ?>
                                                                             </div>
-                                                                        @endforeach
+                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                     </div>
-                                                                @endif
+                                                                <?php endif; ?>
 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endif
+                                                <?php endif; ?>
                                             </li>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                 </nav>
 
 
-                                <a href="{{ $front['header']['cta_url'] }}"
+                                <a href="<?php echo e($front['header']['cta_url']); ?>"
                                     class="shrink-0 rounded-full bg-[#c9b06f] hover:bg-[#c9b06f]/70 px-10 py-3 text-white">
-                                    {{ $front['header']['cta_text'] }}
+                                    <?php echo e($front['header']['cta_text']); ?>
+
                                 </a>
                             </div>
                         </div>
@@ -401,14 +407,15 @@
                         <section id="treatments" class="px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-12">
                             <div class="mx-auto max-w-400">
                                 <h2 class="text-center font-serif text-[#705F40] text-[44px] sm:text-[55px]">
-                                    {{ $front['treatments']['title'] }}
+                                    <?php echo e($front['treatments']['title']); ?>
+
                                 </h2>
 
                                 <div class="mt-10 grid gap-2.5 md:gap-8 sm:mt-13 grid-cols-2 lg:grid-cols-3">
-                                    @foreach ($front['treatments']['cards'] as $card)
+                                    <?php $__currentLoopData = $front['treatments']['cards']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $card): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <article class="h-full flex flex-col">
                                             <div class="aspect-video overflow-hidden bg-black/5">
-                                                <img src="{{ $card['image'] }}" alt="{{ $card['title'] }}"
+                                                <img src="<?php echo e($card['image']); ?>" alt="<?php echo e($card['title']); ?>"
                                                     class="h-full w-full object-cover" loading="lazy" />
                                             </div>
 
@@ -416,23 +423,26 @@
                                                 class="bg-[#DED6C7] px-4 py-5 text-center flex-1 flex items-center justify-center min-h-12">
                                                 <h3
                                                     class="text-[12px] sm:text-[18px] font-thin text-[#705F40] line-clamp-3">
-                                                    {{ $card['title'] }}
+                                                    <?php echo e($card['title']); ?>
+
                                                 </h3>
                                             </div>
 
                                             <div class="px-6 pb-6 pt-8 text-center hidden sm:block">
                                                 <p
                                                     class="mx-auto font-light max-w-[36ch] text-[18px] leading-5 text-black/45">
-                                                    {{ $card['text'] }}
+                                                    <?php echo e($card['text']); ?>
+
                                                 </p>
 
-                                                <a href="{{ $card['url'] }}"
+                                                <a href="<?php echo e($card['url']); ?>"
                                                     class="mt-8 inline-flex items-center justify-center rounded-full border border-[#c9b06f] px-6 py-2 min-w-59 text-[#705F40] hover:bg-[#c9b06f]/10 transition">
-                                                    {{ $front['treatments']['button_text'] }}
+                                                    <?php echo e($front['treatments']['button_text']); ?>
+
                                                 </a>
                                             </div>
                                         </article>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             </div>
                         </section>
@@ -442,29 +452,33 @@
                                 <div class="px-8 py-10 sm:px-10 flex flex-col items-center justify-center">
                                     <div>
                                         <p class="text-[18px] tracking-[0.28em] text-[#C7B276] uppercase">
-                                            {{ $front['about']['kicker'] }}
+                                            <?php echo e($front['about']['kicker']); ?>
+
                                         </p>
 
                                         <h1
                                             class="mt-5 uppercase font-serif text-[48px] tracking-widest text-[#705F40] sm:text-[40px]">
-                                            {{ $front['about']['title'] }}
+                                            <?php echo e($front['about']['title']); ?>
+
                                         </h1>
 
                                         <div class="mt-7 flex gap-10 md:gap-15">
                                             <div class="w-0.5 bg-[#DED6C7]"></div>
                                             <p class="max-w-95 text-[18px] leading-6 text-[#705F40]">
-                                                {!! $front['about']['text'] !!}
+                                                <?php echo $front['about']['text']; ?>
+
                                             </p>
                                         </div>
                                     </div>
-                                    <a href="{{ $front['about']['cta_url'] }}"
+                                    <a href="<?php echo e($front['about']['cta_url']); ?>"
                                         class="mt-10 rounded-full border border-[#c9b06f] hover:bg-[#c9b06f]/70 hover:text-white hover:cursor-pointer text-nowrap px-6 py-3 text-[#c9b06f] uppercase">
-                                        {{ $front['about']['cta_text'] }}
+                                        <?php echo e($front['about']['cta_text']); ?>
+
                                     </a>
                                 </div>
 
                                 <div class="bg-white">
-                                    <img src="{{ $front['about']['image'] }}" alt="Clincity Team"
+                                    <img src="<?php echo e($front['about']['image']); ?>" alt="Clincity Team"
                                         class="h-full w-full object-cover" loading="lazy" />
                                 </div>
                             </div>
@@ -474,21 +488,24 @@
                             <div class="mx-auto max-w-7xl flex flex-col items-center justify-center">
                                 <h2
                                     class="text-center font-serif text-[30px] tracking-[0.14em] text-black/55 sm:text-[36px] mt-13 md:mt-0">
-                                    {{ $front['reviews']['title'] }}
+                                    <?php echo e($front['reviews']['title']); ?>
+
                                 </h2>
 
                                 <div class="ti-front-reviews mt-10 flex-nowrap">
-                                    {!! do_shortcode('[trustindex no-registration=google]') !!}
+                                    <?php echo do_shortcode('[trustindex no-registration=google]'); ?>
+
                                 </div>
-                                <a href="{{ $front['reviews']['button_url'] }}"
+                                <a href="<?php echo e($front['reviews']['button_url']); ?>"
                                     class="mt-8 inline-flex items-center justify-center rounded-full border border-[#c9b06f] px-6 py-2 min-w-59 text-[#705F40] hover:bg-[#c9b06f]/10 transition">
 
-                                    {{ $front['reviews']['button_text'] }}
+                                    <?php echo e($front['reviews']['button_text']); ?>
+
                                 </a>
 
                                 <div
                                     class="mt-12 hidden md:flex flex-wrap w-full items-center justify-center gap-x-12 gap-y-6 opacity-80">
-                                    <img src="{{ $front['reviews']['brand_logos'] }}" alt="Brand Logos"
+                                    <img src="<?php echo e($front['reviews']['brand_logos']); ?>" alt="Brand Logos"
                                         class="" />
                                 </div>
                             </div>
@@ -499,7 +516,7 @@
                             <div class="mx-auto max-w-7xl">
                                 <div class="w-full max-w-6xl mx-auto border border-[#c7b27a] bg-white">
                                     <div class="relative">
-                                        <img src="{{ get_theme_file_uri('/resources/images/map.png') }}" alt="Map"
+                                        <img src="<?php echo e(get_theme_file_uri('/resources/images/map.png')); ?>" alt="Map"
                                             class="w-full h-65 md:h-80 object-cover" />
 
                                         <div
@@ -525,8 +542,11 @@
                         </section>
                     </div>
                 </section>
-                {{-- resources/views/components/opening-hours.blade.php --}}
-                @props([
+                
+                <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
+
+$__newAttributes = [];
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames(([
                     'title' => "LET'S START TODAY!",
                     'subtitle' => 'OPENING HOURS',
                     'hours' => [
@@ -538,7 +558,44 @@
                         ['day' => 'Sat', 'time' => '10:00am - 6:00pm'],
                         ['day' => 'Sunday', 'time' => 'Closed'],
                     ],
-                ])
+                ]));
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (in_array($__key, $__propNames)) {
+        $$__key = $$__key ?? $__value;
+    } else {
+        $__newAttributes[$__key] = $__value;
+    }
+}
+
+$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
+
+unset($__propNames);
+unset($__newAttributes);
+
+foreach (array_filter(([
+                    'title' => "LET'S START TODAY!",
+                    'subtitle' => 'OPENING HOURS',
+                    'hours' => [
+                        ['day' => 'Monday', 'time' => '10:00am - 6:30pm'],
+                        ['day' => 'Tuesday', 'time' => '10:00am - 6:30pm'],
+                        ['day' => 'Wednesday', 'time' => '10:00am - 6:30pm'],
+                        ['day' => 'Thursday', 'time' => '10:00am - 6:30pm'],
+                        ['day' => 'Friday', 'time' => '10:00am - 6:30pm'],
+                        ['day' => 'Sat', 'time' => '10:00am - 6:00pm'],
+                        ['day' => 'Sunday', 'time' => 'Closed'],
+                    ],
+                ]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+    $$__key = $$__key ?? $__value;
+}
+
+$__defined_vars = get_defined_vars();
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
+}
+
+unset($__defined_vars, $__key, $__value); ?>
 
                 <section class="hidden md:block px-4 pb-16 pt-10 sm:px-6 sm:pb-20">
                     <div class="mx-auto max-w-5xl">
@@ -555,16 +612,18 @@
 
                             <div class="w-full">
                                 <dl class="ml-10 space-y-2 text-[#7a6b55]">
-                                    @foreach ($hours as $row)
+                                    <?php $__currentLoopData = $hours; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="grid grid-cols-2 gap-6 justify-between">
                                             <dt class="text-base font-normal">
-                                                {{ $row['day'] }}
+                                                <?php echo e($row['day']); ?>
+
                                             </dt>
                                             <dd class="text-base font-normal text-right">
-                                                {{ $row['time'] }}
+                                                <?php echo e($row['time']); ?>
+
                                             </dd>
                                         </div>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </dl>
                             </div>
                         </div>
@@ -756,4 +815,6 @@
                     margin-right: 0 !important;
                 }
             </style>
-        @endsection
+        <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/wordpress/wp-content/themes/clin-city/resources/views/front-page.blade.php ENDPATH**/ ?>

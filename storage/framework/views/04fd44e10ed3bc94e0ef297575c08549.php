@@ -1,14 +1,7 @@
-{{--
-  Template Name: Welcome Page
-  Template Post Type: page
---}}
+<?php $__env->startSection('header'); ?>
+<?php $__env->stopSection(); ?>
 
-@extends('layouts.app')
-
-@section('header')
-@endsection
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <main class="">
         <div class="px-4 sm:px-6">
             <section class="mx-auto w-full max-w-400 overflow-hidden rounded-none ">
@@ -16,34 +9,34 @@
                     class="flex flex-wrap max-w-7xl mx-auto items-center justify-between gap-3 px-4 py-5 text-black/60 sm:px-6">
                     <div class="flex items-center gap-2">
                         <span class="md:inline-flex items-center gap-6 hidden">
-                            @foreach ($welcome['topbar']['social'] as $item)
-                                <a href="{{ $item['url'] }}">
-                                    <i class="{{ $item['icon'] }}"></i>
+                            <?php $__currentLoopData = $welcome['topbar']['social']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <a href="<?php echo e($item['url']); ?>">
+                                    <i class="<?php echo e($item['icon']); ?>"></i>
                                 </a>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </span>
                     </div>
 
                     <div class="items-center gap-2 hidden md:flex">
-                        <span class="opacity-70 hidden md:flex">{{ $welcome['topbar']['whatsapp_label'] }}</span>
+                        <span class="opacity-70 hidden md:flex"><?php echo e($welcome['topbar']['whatsapp_label']); ?></span>
                         <a class="hover:text-black/80 pl-2 text-[30px] md:text-base"
-                            href="{{ $welcome['topbar']['whatsapp_tel'] }}">
+                            href="<?php echo e($welcome['topbar']['whatsapp_tel']); ?>">
                             <i class="fa-brands fa-whatsapp"></i>
                             <span class="ml-2 hidden md:inline-block">
-                                {{ $welcome['topbar']['whatsapp_phone_text'] }}</span></a>
+                                <?php echo e($welcome['topbar']['whatsapp_phone_text']); ?></span></a>
                         <a class="px-8 text-[30px] md:text-base">
                             <i class="fab fa-weixin"></i></a>
                         <div class="hidden md:inline-block">
-                            <span class="opacity-70">{{ $welcome['topbar']['hours_label'] }}</span>
+                            <span class="opacity-70"><?php echo e($welcome['topbar']['hours_label']); ?></span>
                             <i class="fa-regular fa-clock"></i>
-                            <span>{{ $welcome['topbar']['hours_text'] }}</span>
+                            <span><?php echo e($welcome['topbar']['hours_text']); ?></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="relative">
                     <div class="absolute inset-0">
-                        <img src="{{ $welcome['hero']['bg_image'] }}" alt="" class="h-full w-full object-cover" />
+                        <img src="<?php echo e($welcome['hero']['bg_image']); ?>" alt="" class="h-full w-full object-cover" />
                     </div>
 
                     <div
@@ -51,33 +44,36 @@
                         <h1 class="select-none font-serif text-[68px] font-light tracking-[0.22em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]
                    sm:text-[92px] md:text-[120px]"
                             aria-label="CLINICITY">
-                            <img src="{{ $welcome['hero']['logo_image'] }}" alt="CLINICITY"
+                            <img src="<?php echo e($welcome['hero']['logo_image']); ?>" alt="CLINICITY"
                                 class="h-16 w-auto sm:h-20 md:h-50 mx-auto" />
                         </h1>
 
                         <p class="mt-12 text-[11px] tracking-[0.35em] text-white/85 sm:text-[26px]">
-                            {{ $welcome['hero']['subtitle'] }}
+                            <?php echo e($welcome['hero']['subtitle']); ?>
+
                         </p>
 
                         <nav class="mt-40 w-full">
                             <ul
                                 class="flex flex-wrap items-start justify-center gap-x-6 gap-y-3 text-[11px] tracking-[0.15em] text-white/40">
-                                @foreach ($welcome['treatments_nav'] as $item)
+                                <?php $__currentLoopData = $welcome['treatments_nav']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li class="max-w-50!">
-                                        <a href="{{ $item['url'] }}"
+                                        <a href="<?php echo e($item['url']); ?>"
                                             class="inline-block pb-2 border-b border-transparent hover:border-white hover:text-white transition">
-                                            {{ $item['label'] }}
+                                            <?php echo e($item['label']); ?>
+
                                         </a>
                                     </li>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </nav>
 
                         <div class="mt-12">
-                            <a href="{{ $welcome['enter']['url'] }}" id="enter-site"
+                            <a href="<?php echo e($welcome['enter']['url']); ?>" id="enter-site"
                                 class="inline-flex items-center justify-center rounded-full uppercase bg-white/90 px-7 py-3 font-medium tracking-[0.2em] text-black/70 backdrop-blur
                      hover:bg-white hover:text-black/80 transition">
-                                {{ $welcome['enter']['text'] }}
+                                <?php echo e($welcome['enter']['text']); ?>
+
                                 <span
                                     class="ml-2 inline-flex h-4 w-4 items-center justify-center roundedtext-[10px] leading-none">
                                     <i class="fa-solid fa-angle-right"></i>
@@ -95,4 +91,6 @@
             </section>
         </div>
     </main>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/wordpress/wp-content/themes/clin-city/resources/views/welcome-page.blade.php ENDPATH**/ ?>

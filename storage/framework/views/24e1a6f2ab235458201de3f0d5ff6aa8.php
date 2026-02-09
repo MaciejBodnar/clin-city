@@ -1,10 +1,4 @@
-{{--
-  Template Name: Team
---}}
-
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div>
         <section class="">
             <div class="mx-auto w-full max-w-400 overflow-hidden bg-white pt-5">
@@ -13,17 +7,20 @@
                     <div class="bg-white px-8 py-10 sm:px-10 flex flex-col items-center justify-center">
                         <div>
                             <p class="text-[18px] tracking-[0.28em] text-[#C7B276] uppercase">
-                                {{ $team['hero']['kicker'] }}
+                                <?php echo e($team['hero']['kicker']); ?>
+
                             </p>
 
                             <h1 class="mt-3 uppercase font-serif text-[48px] tracking-widest text-[#705F40] sm:text-[40px]">
-                                {{ $team['hero']['title'] }}
+                                <?php echo e($team['hero']['title']); ?>
+
                             </h1>
 
                             <div class="mt-5 flex gap-15">
                                 <div class="w-0.5 bg-[#DED6C7]"></div>
                                 <p class="max-w-95 text-[18px] leading-6 text-[#705F40]">
-                                    {{ $team['hero']['description'] }}
+                                    <?php echo e($team['hero']['description']); ?>
+
                                 </p>
                             </div>
                         </div>
@@ -31,7 +28,7 @@
 
                     <div class="bg-white">
                         <div class="aspect-video sm:aspect-3/2 lg:aspect-video">
-                            <img src="{{ $team['hero']['image'] }}" alt="Clincity Team" class="h-full w-full object-cover"
+                            <img src="<?php echo e($team['hero']['image']); ?>" alt="Clincity Team" class="h-full w-full object-cover"
                                 loading="lazy" />
                         </div>
                     </div>
@@ -43,37 +40,41 @@
             <div class="mx-auto max-w-7xl">
                 <div class="mb-22 flex flex-col gap-6">
                     <h2 class="shrink-0 font-serif text-[#705F40] sm:text-[48px]">
-                        {{ $team['sections']['team_heading'] }}
+                        <?php echo e($team['sections']['team_heading']); ?>
+
                     </h2>
                     <div class="h-0.5 w-full bg-[#DED6C7]"></div>
                 </div>
 
                 <div class="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($team['team_members'] as $person)
+                    <?php $__currentLoopData = $team['team_members']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $person): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <article class="flex flex-col justify-between">
                             <div class="text-center">
                                 <div class="mx-auto h-63.75 w-63.75 overflow-hidden rounded-full bg-black/5">
-                                    <img src="{{ $person['image'] }}" alt="{{ $person['name'] }}"
+                                    <img src="<?php echo e($person['image']); ?>" alt="<?php echo e($person['name']); ?>"
                                         class="h-full w-full object-cover" loading="lazy" />
                                 </div>
 
                                 <h3 class="mt-5 font-serif text-[39px] text-[#705F40]">
-                                    {{ $person['name'] }}
+                                    <?php echo e($person['name']); ?>
+
                                 </h3>
 
                                 <p class="mt-1 text-[18px] text-[#C7B276]">
-                                    {{ $person['role'] }}
+                                    <?php echo e($person['role']); ?>
+
                                 </p>
                             </div>
                             <div class="flex justify-center w-full">
-                                <button type="button" data-member='@json($person)'
+                                <button type="button" data-member='<?php echo json_encode($person, 15, 512) ?>'
                                     onclick="openTeamModal(this)"
                                     class="mt-5 inline-flex cursor-pointer items-center justify-center rounded-full uppercase w-59 border border-[#C7B276] px-10 py-2 text-[#705F40] hover:bg-[#c9b06f]/10 transition">
-                                    {{ $team['sections']['button_text'] }}
+                                    <?php echo e($team['sections']['button_text']); ?>
+
                                 </button>
                             </div>
                         </article>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </section>
@@ -82,37 +83,41 @@
             <div class="mx-auto max-w-7xl">
                 <div class="mb-22 flex flex-col gap-6">
                     <h2 class="shrink-0 font-serif uppercase text-[#705F40] sm:text-[48px]">
-                        {{ $team['sections']['partners_heading'] }}
+                        <?php echo e($team['sections']['partners_heading']); ?>
+
                     </h2>
                     <div class="h-0.5 w-full bg-[#DED6C7]"></div>
                 </div>
 
                 <div class="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($team['partners'] as $person)
+                    <?php $__currentLoopData = $team['partners']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $person): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <article class="flex flex-col justify-between">
                             <div class="text-center">
                                 <div class="mx-auto h-63.75 w-63.75 overflow-hidden rounded-full bg-black/5">
-                                    <img src="{{ $person['image'] }}" alt="{{ $person['name'] }}"
+                                    <img src="<?php echo e($person['image']); ?>" alt="<?php echo e($person['name']); ?>"
                                         class="h-full w-full object-cover" loading="lazy" />
                                 </div>
 
                                 <h3 class="mt-5 font-serif text-[39px] text-[#705F40]">
-                                    {{ $person['name'] }}
+                                    <?php echo e($person['name']); ?>
+
                                 </h3>
 
                                 <p class="mt-1 text-[18px] text-[#C7B276]">
-                                    {{ $person['role'] }}
+                                    <?php echo e($person['role']); ?>
+
                                 </p>
                             </div>
                             <div class="flex justify-center w-full">
-                                <button type="button" data-member='@json($person)'
+                                <button type="button" data-member='<?php echo json_encode($person, 15, 512) ?>'
                                     onclick="openTeamModal(this)"
                                     class="mt-5 inline-flex cursor-pointer items-center justify-center rounded-full uppercase w-59 border border-[#C7B276] px-10 py-2 text-[#705F40] hover:bg-[#c9b06f]/10 transition">
-                                    {{ $team['sections']['button_text'] }}
+                                    <?php echo e($team['sections']['button_text']); ?>
+
                                 </button>
                             </div>
                         </article>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </section>
@@ -169,4 +174,6 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/wordpress/wp-content/themes/clin-city/resources/views/team-template.blade.php ENDPATH**/ ?>
