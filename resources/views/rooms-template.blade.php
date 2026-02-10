@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="bg-white">
-                        <div class="aspect-video sm:aspect-3/2 lg:aspect-video">
+                        <div class="">
                             <img src="{{ $rooms['hero']['image'] }}" alt="Clincity Team" class="h-full w-full object-cover"
                                 loading="lazy" />
                         </div>

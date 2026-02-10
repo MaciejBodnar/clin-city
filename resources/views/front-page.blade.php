@@ -248,10 +248,9 @@
                         </a>
 
                         <div class="w-full max-w-6xl">
-                            <div
-                                class="relative hidden md:flex items-center justify-between gap-6 px-4 py-4 w-full sm:px-6">
-                                <nav class="relative">
-                                    <ul class="flex flex-wrap items-center gap-x-8 gap-y-2 uppercase text-black/55">
+                            <div class="hidden md:flex items-center justify-between gap-6 px-4 py-4 w-full sm:px-6">
+                                <nav class="">
+                                    <ul class="menu flex flex-wrap items-center gap-x-8 gap-y-2 uppercase text-black/55">
                                         @foreach ($top as $item)
                                             @php
                                                 $id = (int) $item->ID;
@@ -267,31 +266,46 @@
                                             @endphp
 
                                             <li class="group static">
-                                                <a href="{{ $url }}"
-                                                    class="relative inline-flex items-center py-2 transition hover:text-black/75 {{ $isCurrent ? 'text-black/75' : '' }}">
-                                                    {{ $title }}
-
-                                                    @if ($openable)
-                                                        <span
-                                                            class="pointer-events-none absolute -bottom-4.5 left-1/2 hidden h-0 w-0 -translate-x-1/2
-                     border-l-8 border-r-8 border-t-8
-                     border-l-transparent border-r-transparent border-t-[#d7cfbf]
-                     group-hover:block group-focus-within:block {{ $isCurrent ? 'block' : '' }}"></span>
-                                                    @endif
-                                                </a>
+                                                @if ($k === 'treatments' || $k === 'collaborate')
+                                                    <div
+                                                        class="w-full relative inline-flex items-center py-2 transition hover:text-black/75 justify-center {{ $isCurrent ? 'text-black/75' : '' }}">
+                                                        {{ $title }}
+                                                        @if ($openable)
+                                                            <span
+                                                                class="items-center absolute -bottom-7 text-[#705F40] left-1/2 hidden group-hover:block group-focus-within:block pt-10 pr-10 {{ $isCurrent ? 'block' : '' }}">
+                                                                &#9206;
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                @else
+                                                    <a href="{{ $url }}"
+                                                        class="w-full relative inline-flex items-center py-2 transition hover:text-black/75 justify-center {{ $isCurrent ? 'text-black/75' : '' }}">
+                                                        {{ $title }}
+                                                        @if ($openable)
+                                                            <span
+                                                                class="items-center absolute -bottom-7 text-[#705F40] left-1/2 hidden group-hover:block group-focus-within:block pt-10 pr-10 {{ $isCurrent ? 'block' : '' }}">
+                                                                &#9206;
+                                                            </span>
+                                                        @endif
+                                                    </a>
+                                                @endif
 
                                                 @if ($openable)
                                                     <div
-                                                        class="pointer-events-none absolute inset-x-0 top-full z-50 mt-5
-                   opacity-0 transition duration-200
-                   group-hover:pointer-events-auto group-hover:opacity-100
-                   group-focus-within:pointer-events-auto group-focus-within:opacity-100">
-                                                        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-                                                            <div
-                                                                class="border border-black/10 bg-[#d7cfbf] px-10 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                                                        class="pointer-events-none absolute inset-x-0 min-w-full left-0 top-full z-50
+                                            opacity-0 transition duration-200
+                                            group-hover:pointer-events-auto group-hover:opacity-100
+                                            group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+                                                        <div
+                                                            class="w-full border-t-[#705F40] border-b-0 border-x-0 border-2 bg-[#d7cfbf]">
+                                                            <div class="mx-auto w-full max-w-6xl px-10 py-10">
 
                                                                 @if ($k === 'treatments')
                                                                     @php $cols = $children[$id] ?? []; @endphp
+                                                                    <h3
+                                                                        class="font-serif mb-8 text-[42px] tracking-[0.08em] text-black/55">
+                                                                        TREATMENTS
+                                                                    </h3>
 
                                                                     <div class="grid gap-12 lg:grid-cols-3">
                                                                         @foreach ($cols as $col)
@@ -301,17 +315,17 @@
                                                                             @endphp
 
                                                                             <div>
+
                                                                                 <p
                                                                                     class="text-[13px] font-medium tracking-[0.12em] text-black/55">
                                                                                     {{ $col->title }}
                                                                                 </p>
 
                                                                                 <ul
-                                                                                    class="mt-5 space-y-3 text-[14px] tracking-[0.02em] text-black/50">
+                                                                                    class="submenu-item mt-5 space-y-3 text-[14px] tracking-[0.02em] text-black/50">
                                                                                     @foreach ($links as $lnk)
-                                                                                        <li class="flex items-start gap-3">
-                                                                                            <span
-                                                                                                class="mt-2 inline-block h-1 w-1 rounded-full bg-black/35"></span>
+                                                                                        <li
+                                                                                            class="flex items-start gap-3 submenu-item">
                                                                                             <a href="{{ $lnk->url }}"
                                                                                                 class="hover:text-black/70 transition">
                                                                                                 {{ $lnk->title }}
@@ -336,11 +350,11 @@
                                                                                 <a href="{{ $b->url }}"
                                                                                     class="block">
                                                                                     <p
-                                                                                        class="text-[13px] font-semibold tracking-widest text-black/55">
+                                                                                        class="text-[16px] font-semibold tracking-widest text-black/55">
                                                                                         {{ $b->title }}
                                                                                     </p>
                                                                                     <p
-                                                                                        class="mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
+                                                                                        class="ml-2 mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
                                                                                         {{ $b->description }}
                                                                                     </p>
                                                                                 </a>
@@ -413,7 +427,7 @@
                                             </div>
 
                                             <div
-                                                class="bg-[#DED6C7] px-4 py-5 text-center flex-1 flex items-center justify-center min-h-12">
+                                                class="bg-[#DED6C7] px-4 py-5 text-center uppercase tracking-widest flex-1 flex items-center justify-center min-h-12">
                                                 <h3
                                                     class="text-[12px] sm:text-[18px] font-thin text-[#705F40] line-clamp-3">
                                                     {{ $card['title'] }}
@@ -488,8 +502,7 @@
 
                                 <div
                                     class="mt-12 hidden md:flex flex-wrap w-full items-center justify-center gap-x-12 gap-y-6 opacity-80">
-                                    <img src="{{ $front['reviews']['brand_logos'] }}" alt="Brand Logos"
-                                        class="" />
+                                    <img src="{{ $front['map']['brands_logos'] }}" alt="Brand Logos" class="" />
                                 </div>
                             </div>
                         </section>
@@ -499,7 +512,7 @@
                             <div class="mx-auto max-w-7xl">
                                 <div class="w-full max-w-6xl mx-auto border border-[#c7b27a] bg-white">
                                     <div class="relative">
-                                        <img src="{{ get_theme_file_uri('/resources/images/map.png') }}" alt="Map"
+                                        <img src="{{ $front['map']['map_image'] }}" alt="Map"
                                             class="w-full h-65 md:h-80 object-cover" />
 
                                         <div
@@ -511,12 +524,13 @@
                                         <div class="mx-auto w-10/12 border-t border-[#c7b27a]"></div>
 
                                         <div class="py-10 text-center">
-                                            <div class="inline-flex items-baseline gap-3">
-                                                <span class="text-xs tracking-[0.35em] text-[#c7b27a] font-medium">
-                                                    FIND US
-                                                </span>
+                                            <div class="flex flex-col md:flex-row justify-center items-center gap-3 px-4">
+                                                <a href="#"
+                                                    class="text-xs uppercase tracking-[0.35em] text-[#c7b27a] font-medium">
+                                                    {{ $front['map']['address_label'] }}
+                                                </a>
                                                 <span class="text-sm text-[#6b6b6b]">
-                                                    36 Great Titchfield Street, London, W1W 8BQ
+                                                    {{ $front['map']['address_text'] }}
                                                 </span>
                                             </div>
                                         </div>
@@ -525,37 +539,22 @@
                         </section>
                     </div>
                 </section>
-                {{-- resources/views/components/opening-hours.blade.php --}}
-                @props([
-                    'title' => "LET'S START TODAY!",
-                    'subtitle' => 'OPENING HOURS',
-                    'hours' => [
-                        ['day' => 'Monday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Tuesday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Wednesday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Thursday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Friday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Sat', 'time' => '10:00am - 6:00pm'],
-                        ['day' => 'Sunday', 'time' => 'Closed'],
-                    ],
-                ])
-
                 <section class="hidden md:block px-4 pb-16 pt-10 sm:px-6 sm:pb-20">
                     <div class="mx-auto max-w-5xl">
                         <div class="grid grid-cols-1 items-start gap-20 md:grid-cols-2">
                             <div>
                                 <h2 class="text-[#6a5a40] uppercase text-4xl md:text-5xl font-light tracking-wide">
-                                    Let's start today!
+                                    {{ $front['opening_hours']['title'] }}
                                 </h2>
 
                                 <div class="mt-6 uppercase text-[#c7b27a] text-xs tracking-[0.45em]">
-                                    Opening hours
+                                    {{ $front['opening_hours']['subtitle'] }}
                                 </div>
                             </div>
 
                             <div class="w-full">
                                 <dl class="ml-10 space-y-2 text-[#7a6b55]">
-                                    @foreach ($hours as $row)
+                                    @foreach ($front['opening_hours']['hours'] as $row)
                                         <div class="grid grid-cols-2 gap-6 justify-between">
                                             <dt class="text-base font-normal">
                                                 {{ $row['day'] }}

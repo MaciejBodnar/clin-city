@@ -19,3 +19,11 @@ a {
 ul li.submenu-item::before {
   content: "▶ ";
 }
+
+ul.menu li::before {
+  content: "";
+}
+
+ul li::before {
+  content: "• ";
+}

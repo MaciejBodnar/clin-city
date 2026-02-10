@@ -184,9 +184,7 @@ class Team extends Composer
             ];
         }
 
-        return [
-            $partners,
-        ];
+        return $partners;
     }
 
     private function getModalData()

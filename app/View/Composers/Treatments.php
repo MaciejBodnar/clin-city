@@ -74,40 +74,7 @@ class Treatments extends Composer
         $rows = $this->getAcfFieldSafe('treatment_sections', false, []);
 
         if (empty($rows)) {
-            return [
-                [
-                    'layout' => 'split',
-                    'heading' => 'Mesotherapy Benefits',
-                    'image' => get_theme_file_uri('/resources/images/treatments/mesotherapy/benefit-1.jpg'),
-                    'image_side' => 'left',
-                    'content_type' => 'bullets',
-                    'bullets' => [
-                        ['title' => 'Skin Rejuvenation', 'text' => 'Helps improve skin texture, reduce fine lines, and enhance overall appearance.'],
-                        ['title' => 'Cellulite Reduction', 'text' => 'May assist in breaking down fat deposits and improving the look of dimpled skin.'],
-                        ['title' => 'Hair Restoration', 'text' => 'Can support hair growth by delivering nutrients to the scalp.'],
-                        ['title' => 'Hydration and Radiance', 'text' => 'Hydrates skin from within, improving plumpness and glow.'],
-                    ],
-                    'ordered' => [],
-                    'wysiwyg' => '',
-                ],
-                [
-                    'layout' => 'split',
-                    'heading' => 'Polynucleotide Benefits',
-                    'image' => get_theme_file_uri('/resources/images/treatments/mesotherapy/benefit-2.jpg'),
-                    'image_side' => 'right',
-                    'content_type' => 'ordered',
-                    'bullets' => [],
-                    'ordered' => [
-                        'Skin Rejuvenation: supports renewal and healthier turnover.',
-                        'Anti-Aging Effects: promotes collagen and elastin support.',
-                        'Improved Hydration: enhances moisture retention.',
-                        'Scar and Stretch Mark Treatment: supports repair and regeneration.',
-                        'Hair Restoration: may improve scalp conditions and growth.',
-                        'Improved Skin Tone and Elasticity: supports radiance and texture.',
-                    ],
-                    'wysiwyg' => '',
-                ],
-            ];
+            return [];
         }
 
         $sections = [];
@@ -153,33 +120,11 @@ class Treatments extends Composer
      */
     private function getInfo3Col()
     {
-        $fallback = [
-            [
-                'title' => 'How it works:',
-                'text' => "Mesotherapy involves micro-injections at the treatment site...\n\nPolynucleotides promote cellular regeneration...",
-            ],
-            [
-                'title' => 'Safety and side effects:',
-                'text' => "At our clinic, your safety is our top priority...\n\nYou may notice temporary side effects such as bruising...",
-            ],
-            [
-                'title' => 'The Clincity Difference',
-                'text' => "Your well-being is at the heart of our practice...\n\nWe use only safe, reliable, and regulated products...",
-            ],
-        ];
 
         $info = $this->getAcfFieldSafe('treatment_info_3col', false, []);
 
-        if (empty($info)) {
-            return $fallback;
-        }
 
         $cols = $info['columns'] ?? [];
-
-        if (empty($cols)) {
-            return $fallback;
-        }
-
         $out = [];
         foreach ($cols as $c) {
             $out[] = [

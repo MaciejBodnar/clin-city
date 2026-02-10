@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                <div class="relative">
+                <div class="relative mb-10">
                     <div class="absolute inset-0">
                         <img src="<?php echo e($welcome['hero']['bg_image']); ?>" alt="" class="h-full w-full object-cover" />
                     </div>
@@ -55,7 +55,7 @@
 
                         <nav class="mt-40 w-full">
                             <ul
-                                class="flex flex-wrap items-start justify-center gap-x-6 gap-y-3 text-[11px] tracking-[0.15em] text-white/40">
+                                class="menu flex flex-wrap items-start justify-center gap-x-6 gap-y-3 text-[11px] tracking-[0.15em] text-white/40">
                                 <?php $__currentLoopData = $welcome['treatments_nav']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li class="max-w-50!">
                                         <a href="<?php echo e($item['url']); ?>"

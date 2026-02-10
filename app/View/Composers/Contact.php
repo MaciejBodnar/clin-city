@@ -36,8 +36,6 @@ class Contact extends Composer
     {
         return [
             'page' => $this->getPageData(),
-            'sections' => $this->getSectionsData(),
-            'company' => $this->getCompanyData(),
         ];
     }
 
@@ -49,66 +47,10 @@ class Contact extends Composer
     private function getPageData()
     {
         return [
-            'title' => $this->getAcfFieldSafe('page_title', false, 'Kontakt123'),
+            'title' => $this->getAcfFieldSafe('page_title', false, 'collaborate'),
+            'text' => $this->getAcfFieldSafe('page_text', false, "Interested in working together? Fill out some info and we will be in touch shortly! We can't wait to hear from you!"),
         ];
     }
-
-    /**
-     * Get section headings from ACF fields
-     *
-     * @return array
-     */
-    private function getSectionsData()
-    {
-        return [
-            'contact_heading' => $this->getAcfFieldSafe('contact_section_heading', false, 'Dane kontaktowe'),
-            'hours_heading' => $this->getAcfFieldSafe('hours_section_heading', false, 'Godziny Otwarcia!'),
-        ];
-    }
-
-    /**
-     * Get company information from ACF fields
-     *
-     * @return array
-     */
-    private function getCompanyData()
-    {
-        return [
-            'email' => $this->getAcfFieldSafe('company_email', false, 'info@optimumtaxfinance.co.uk'),
-            'phone' => $this->getAcfFieldSafe('company_phone', false, '+0208 840 0422'),
-            'addr' => $this->getAcfFieldSafe('company_address', false, '56 Boston Road <br> London W7 3TR'),
-            'hours' => $this->getCompanyHours(),
-        ];
-    }
-
-    /**
-     * Get company opening hours from ACF fields
-     *
-     * @return array
-     */
-    private function getCompanyHours()
-    {
-        // Check for ACF hours fields
-        if (function_exists('get_field')) {
-            $hours_weekdays = \get_field('opening_hours_weekdays');
-            $hours_weekend = \get_field('opening_hours_weekend');
-
-            $hours = [];
-            if ($hours_weekdays) $hours[] = $hours_weekdays;
-            if ($hours_weekend) $hours[] = $hours_weekend;
-
-            if (!empty($hours)) {
-                return $hours;
-            }
-        }
-
-        // Fallback hours
-        return [
-            'Pon–Pt: 9.00 – 17.00',
-            'Sob: 9.00 – 13.00'
-        ];
-    }
-
     /**
      * Safe ACF field retrieval with fallback
      *

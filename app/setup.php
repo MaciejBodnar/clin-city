@@ -158,13 +158,13 @@ add_action('widgets_init', function () {
  * Register custom routes.
  */
 add_action('init', function () {
-    add_rewrite_rule('^welcome/?$', 'index.php?clin_route=welcome', 'top');
-    add_rewrite_rule('^team/?$', 'index.php?clin_route=team', 'top');
-    add_rewrite_rule('^rooms/?$', 'index.php?clin_route=rooms', 'top');
-    add_rewrite_rule('^treatments/?$', 'index.php?clin_route=treatments', 'top');
-    add_rewrite_rule('^contact/?$', 'index.php?clin_route=contact', 'top');
+    // add_rewrite_rule('^welcome1/?$', 'index.php?clin_route=welcome1', 'top');
+    // add_rewrite_rule('^team/?$', 'index.php?clin_route=team', 'top');
+    // add_rewrite_rule('^rooms/?$', 'index.php?clin_route=rooms', 'top');
+    // add_rewrite_rule('^treatments/?$', 'index.php?clin_route=treatments', 'top');
+    // add_rewrite_rule('^contact/?$', 'index.php?clin_route=contact', 'top');
 
-    // flush_rewrite_rules();
+    flush_rewrite_rules();
 });
 
 add_filter('query_vars', function ($vars) {

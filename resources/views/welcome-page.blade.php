@@ -41,7 +41,7 @@
                     </div>
                 </div>
 
-                <div class="relative">
+                <div class="relative mb-10">
                     <div class="absolute inset-0">
                         <img src="{{ $welcome['hero']['bg_image'] }}" alt="" class="h-full w-full object-cover" />
                     </div>
@@ -61,7 +61,7 @@
 
                         <nav class="mt-40 w-full">
                             <ul
-                                class="flex flex-wrap items-start justify-center gap-x-6 gap-y-3 text-[11px] tracking-[0.15em] text-white/40">
+                                class="menu flex flex-wrap items-start justify-center gap-x-6 gap-y-3 text-[11px] tracking-[0.15em] text-white/40">
                                 @foreach ($welcome['treatments_nav'] as $item)
                                     <li class="max-w-50!">
                                         <a href="{{ $item['url'] }}"

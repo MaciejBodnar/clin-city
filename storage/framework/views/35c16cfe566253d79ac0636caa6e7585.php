@@ -4,115 +4,124 @@
             <div class="mx-auto w-full max-w-400 overflow-hidden bg-white pt-5">
 
                 <div class="grid gap-0 lg:grid-cols-2">
-                    <div class="bg-white px-8 py-10 sm:px-10 flex flex-col items-center justify-center">
-                        <div>
+                    <div class="bg-white px-8 py-10 sm:px-10 flex flex-col items-center justify-end">
+                        <div class="max-w-115">
                             <p class="text-[18px] tracking-[0.28em] text-[#C7B276] uppercase">
-                                <?php echo e($treatment['hero']['title']); ?>
+                                <?php echo e($treatment['hero']['kicker']); ?>
 
                             </p>
 
                             <h1
                                 class="mt-3 uppercase font-serif text-[32px] md:text-[48px] tracking-widest text-[#705F40] sm:text-[40px]">
-                                <?php echo e($treatment['hero']['kicker']); ?>
+                                <?php echo e($treatment['hero']['title']); ?>
 
                             </h1>
 
                             <div class="mt-5 flex gap-10 md:gap-15">
                                 <div class="w-0.5 bg-[#DED6C7]"></div>
-                                <p class="max-w-95 text-[18px] leading-6 text-[#705F40]">
-                                    <?php echo e($treatment['hero']['text']); ?>
+                                <p class="max-w-100 text-[18px] leading-8 text-[#705F40]">
+                                    <?php echo $treatment['hero']['text']; ?>
 
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white">
-                        <div class="aspect-video sm:aspect-3/2 lg:aspect-video">
+                    <div class="">
+                        <div class="min-h-full">
                             <img src="<?php echo e($treatment['hero']['image']); ?>" alt="<?php echo e($treatment['hero']['title']); ?>"
-                                class="h-full w-full object-cover" loading="lazy" />
+                                class="object-cover w-full h-full" loading="lazy" />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="px-4 pb-12 pt-10 sm:px-6 sm:pb-14">
-            <div class="mx-auto max-w-7xl space-y-10">
-                <?php $__currentLoopData = $treatment['sections']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="grid items-stretch md:grid-cols-2 gap-8 p-8 sm:p-10">
-                        <div class="h-full">
-                            <div class="h-full min-h-55 overflow-hidden bg-black/5 sm:min-h-65  <?php echo e($s['image_side']); ?>">
-                                <img src="<?php echo e($s['image']); ?>" alt="" class="h-full w-full object-cover"
-                                    loading="lazy">
+        <?php if(!empty($treatment['sections'] ?? [])): ?>
+            <section class="px-4 pb-12 pt-10 sm:px-6 sm:pb-14">
+                <div class="mx-auto max-w-7xl space-y-10">
+                    <?php $__currentLoopData = $treatment['sections']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="grid items-stretch md:grid-cols-2 gap-8 md:gap-24 p-8 sm:p-10">
+                            <div class="">
+                                <div class="h-full overflow-hidden bg-black/5  <?php echo e($s['image_side']); ?>">
+                                    <img src="<?php echo e($s['image']); ?>" alt=""
+                                        class="h-full max-h-218.25 w-full object-cover" loading="lazy">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="flex flex-col">
-                            <h2 class="font-serif text-[39px] tracking-[0.06em] text-black/60 sm:text-[22px]">
-                                <?php echo e($s['heading'] ?? ''); ?>
+                            <div class="flex flex-col">
+                                <h2 class="font-serif text-[39px] tracking-[0.06em] text-black/60 sm:text-[22px]">
+                                    <?php echo e($s['heading'] ?? ''); ?>
 
-                            </h2>
+                                </h2>
 
-                            <div class="mt-4 h-px w-full bg-black/10"></div>
+                                <div class="mt-10 h-px w-full bg-black/10"></div>
 
-                            <div class="mt-6 text-[18px] leading-6 text-black/45">
-                                <?php if($s['content_type'] === 'bullets'): ?>
-                                    <ul class="space-y-4">
-                                        <?php $__currentLoopData = $s['bullets'] ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <li>
-                                                <span class="font-medium text-black/55"><?php echo e($b['title'] ?? ''); ?>:</span>
-                                                <span><?php echo e($b['text'] ?? ''); ?></span>
-                                            </li>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </ul>
-                                <?php elseif($s['content_type'] === 'ordered'): ?>
-                                    <ol class="space-y-3 pl-5">
-                                        <?php $__currentLoopData = $s['ordered'] ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $idx => $line): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <li class="list-decimal">
-                                                <?php echo e($line); ?>
+                                <div class="mt-10 text-[18px] leading-6 text-black/45">
+                                    <?php if($s['content_type'] === 'bullets'): ?>
+                                        <ul class="space-y-6">
+                                            <?php $__currentLoopData = $s['bullets'] ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <li class="">
+                                                    <span class="font-medium text-black/55"><?php echo e($b['title'] ?? ''); ?></span>
+                                                    <span><?php echo e($b['text'] ?? ''); ?></span>
+                                                </li>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </ul>
+                                    <?php elseif($s['content_type'] === 'ordered'): ?>
+                                        <ol class="space-y-7 pl-5">
+                                            <?php $__currentLoopData = $s['ordered'] ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $idx => $line): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <li class="list-decimal">
+                                                    <?php echo $line; ?>
 
-                                            </li>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </ol>
-                                <?php else: ?>
-                                    <div
-                                        class="prose prose-sm max-w-none prose-p:leading-6 prose-p:text-black/45 prose-li:text-black/45 prose-strong:text-black/55">
-                                        <?php echo $s['wysiwyg'] ?? ''; ?>
+                                                </li>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </ol>
+                                    <?php else: ?>
+                                        <div
+                                            class="prose prose-sm max-w-none prose-p:leading-6 prose-p:text-black/45 prose-li:text-black/45 prose-strong:text-black/55">
+                                            <?php echo $s['wysiwyg']; ?>
 
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </div>
-        </section>
-
-        <section class="px-4 pb-12 sm:px-6 sm:pb-14">
-            <div class="mx-auto max-w-400 overflow-hidden bg-[#efeae2] flex justify-center">
-                <div class="grid gap-10 px-8 py-10 sm:px-10 sm:py-12 lg:grid-cols-3 max-w-7xl">
-                    <?php $__currentLoopData = $treatments['info_3col'] ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $col): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="flex flex-col justify-between">
-                            <h3 class="font-serif text-[39px] tracking-[0.06em] text-black/60">
-                                <?php echo e($col['title'] ?? ''); ?>
-
-                            </h3>
-                            <div>
-                                <div class="mt-4 h-px w-full bg-white"></div>
-
-                                <div class="mt-6 whitespace-pre-line text-[18px] leading-6 text-black/45">
-                                    <?php echo e($col['text'] ?? ''); ?>
-
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
-            </div>
-        </section>
+            </section>
+        <?php endif; ?>
+        <?php
+            $infoColumns = array_filter(
+                $treatments['info_3col'] ?? [],
+                fn($col) => !empty(trim((string) ($col['title'] ?? ''))) || !empty(trim((string) ($col['text'] ?? ''))),
+            );
+        ?>
+        <?php if(!empty($infoColumns)): ?>
+            <section class="px-4 pb-12 sm:px-6 sm:pb-14">
+                <div class="mx-auto max-w-400 overflow-hidden bg-[#efeae2] flex justify-center">
+                    <div class="flex gap-10 px-8 py-10 sm:px-10 sm:py-12 max-w-7xl">
+                        <?php $__currentLoopData = $infoColumns; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $col): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="flex flex-col flex-1">
+                                <h3 class="font-serif text-[39px] tracking-[0.06em] text-black/60 leading-[1.15] min-h-22">
+                                    <?php echo e($col['title'] ?? ''); ?>
 
-        <section class="px-4 pb-16 sm:px-6 sm:pb-20">
+                                </h3>
+                                <div>
+                                    <div class="mt-4 h-px w-full bg-white"></div>
+
+                                    <div class="mt-6 whitespace-pre-line text-[18px] leading-6 text-black/45">
+                                        <?php echo $col['text'] ?? ''; ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </div>
+            </section>
+        <?php endif; ?>
+
+        <section class="px-4 pb-16 sm:px-6 sm:pb-20 mt-5">
             <div class="mx-auto max-w-7xl space-y-20">
                 <?php $__currentLoopData = $treatments['pricing_blocks']['blocks']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $block): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php

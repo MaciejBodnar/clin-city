@@ -90,15 +90,9 @@
     <div class="flex flex-wrap max-w-7xl mx-auto items-center justify-between gap-3 px-4 py-5 text-black/60 sm:px-6">
         <div class="md:flex items-center gap-2 hidden">
             <span class="inline-flex items-center gap-6">
-                <a>
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a>
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a>
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
+                <?php $__currentLoopData = $header['social'] ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <a href="<?php echo e($s['url']); ?>"><i class="<?php echo e($s['icon']); ?>"></i></a>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </span>
         </div>
         <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden hover:text-black/75 transition">
@@ -107,23 +101,22 @@
 
         <div class="hidden md:flex items-center gap-2">
 
-            <span class="opacity-70">Whatsapp us</span>
-            <a class="hover:text-black/80 pl-2" href="tel:+442073239534">
+            <span class="opacity-70"><?php echo e($header['whatsapp']['label']); ?></span>
+            <a class="hover:text-black/80 pl-2" href="tel:<?php echo e($header['whatsapp']['tel']); ?>">
                 <i class="fa-brands fa-whatsapp"></i>
-                <span class="ml-2">
-                    020 7323 9534</span></a>
-            <a class="px-8">
-                <i class="fab fa-weixin"></i></a>
-            <span class="opacity-70">Opening hours</span>
+                <span class="ml-2"><?php echo e($header['whatsapp']['phone_text']); ?></span></a>
+            <a class="px-8" href="<?php echo e($header['wechat']['url']); ?>">
+                <i class="<?php echo e($header['wechat']['icon_class']); ?>"></i></a>
+            <span class="opacity-70"><?php echo e($header['hours']['label']); ?></span>
             <i class="fa-regular fa-clock"></i>
-            <span>Mon-Sat, 10:00am-6:30pm</span>
+            <span><?php echo e($header['hours']['text']); ?></span>
         </div>
     </div>
     <div class="mx-auto max-w-400 bg-white flex flex-col items-center relative">
         <div class="px-4 py-8 text-center sm:px-6">
-            <a href="<?php echo e(home_url('/')); ?>" class="inline-block font-serif text-[42px] tracking-[0.18em] text-[#c9b06f]">
-                <img src="<?php echo e(get_template_directory_uri()); ?>/resources/images/logo-menu.png" alt="CLINICITY"
-                    class="h-12 w-auto mx-auto" />
+            <a href="<?php echo e($header['logo_link']); ?>"
+                class="inline-block font-serif text-[42px] tracking-[0.18em] text-[#c9b06f]">
+                <img src="<?php echo e($header['logo']); ?>" alt="CLINICITY" class="h-12 w-auto mx-auto" />
             </a>
         </div>
 
@@ -210,9 +203,10 @@
             </nav>
 
             <div class="border-t border-black/10 p-6 space-y-3 shrink-0">
-                <a href="<?php echo e($ctaUrl); ?>" @click="mobileMenuOpen = false"
+                <a href="<?php echo e($header['button_url']); ?>" @click="mobileMenuOpen = false"
                     class="block w-full rounded-full bg-[#c9b06f] hover:bg-[#c9b06f]/70 px-4 py-3 text-center text-white transition">
-                    BOOK YOUR CONSULTATION
+                    <?php echo e($header['button_text']); ?>
+
                 </a>
             </div>
         </div>
@@ -220,7 +214,7 @@
         <div class="w-full max-w-6xl static">
             <div class="static hidden md:flex items-center justify-between gap-6 px-4 w-full sm:px-6">
                 <nav class="static">
-                    <ul class="flex flex-wrap items-center gap-x-8 gap-y-2 uppercase text-black/55">
+                    <ul class="menu flex flex-wrap items-center gap-x-8 gap-y-2 uppercase text-black/55">
                         <?php $__currentLoopData = $top; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php
                                 $id = (int) $item->ID;
@@ -236,18 +230,33 @@
                             ?>
 
                             <li class="group static">
-                                <a href="<?php echo e($url); ?>"
-                                    class="relative inline-flex items-center py-8 transition hover:text-black/75 <?php echo e($isCurrent ? 'text-black/75' : ''); ?>">
-                                    <?php echo e($title); ?>
+                                <?php if($k === 'treatments' || $k === 'collaborate'): ?>
+                                    <div href="<?php echo e($url); ?>"
+                                        class="relative inline-flex items-center py-8 transition hover:text-black/75 <?php echo e($isCurrent ? 'text-black/75' : ''); ?>">
+                                        <?php echo e($title); ?>
 
 
-                                    <?php if($openable): ?>
-                                        <span
-                                            class="absolute -bottom-2 text-[#705F40] left-1/2 hidden -translate-x-1/2 group-hover:block group-focus-within:block <?php echo e($isCurrent ? 'block' : ''); ?>">
-                                            &#9206;
-                                        </span>
-                                    <?php endif; ?>
-                                </a>
+                                        <?php if($openable): ?>
+                                            <span
+                                                class="absolute -bottom-2 text-[#705F40] left-1/2 hidden -translate-x-1/2 group-hover:block group-focus-within:block <?php echo e($isCurrent ? 'block' : ''); ?>">
+                                                &#9206;
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php else: ?>
+                                    <a href="<?php echo e($url); ?>"
+                                        class="relative inline-flex items-center py-8 transition hover:text-black/75 <?php echo e($isCurrent ? 'text-black/75' : ''); ?>">
+                                        <?php echo e($title); ?>
+
+
+                                        <?php if($openable): ?>
+                                            <span
+                                                class="absolute -bottom-2 text-[#705F40] left-1/2 hidden -translate-x-1/2 group-hover:block group-focus-within:block <?php echo e($isCurrent ? 'block' : ''); ?>">
+                                                &#9206;
+                                            </span>
+                                        <?php endif; ?>
+                                    </a>
+                                <?php endif; ?>
 
                                 <?php if($openable): ?>
                                     <div

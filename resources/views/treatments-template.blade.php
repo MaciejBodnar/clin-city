@@ -10,107 +10,116 @@
             <div class="mx-auto w-full max-w-400 overflow-hidden bg-white pt-5">
 
                 <div class="grid gap-0 lg:grid-cols-2">
-                    <div class="bg-white px-8 py-10 sm:px-10 flex flex-col items-center justify-center">
-                        <div>
+                    <div class="bg-white px-8 py-10 sm:px-10 flex flex-col items-center justify-end">
+                        <div class="max-w-115">
                             <p class="text-[18px] tracking-[0.28em] text-[#C7B276] uppercase">
-                                {{ $treatment['hero']['title'] }}
+                                {{ $treatment['hero']['kicker'] }}
                             </p>
 
                             <h1
                                 class="mt-3 uppercase font-serif text-[32px] md:text-[48px] tracking-widest text-[#705F40] sm:text-[40px]">
-                                {{ $treatment['hero']['kicker'] }}
+                                {{ $treatment['hero']['title'] }}
                             </h1>
 
                             <div class="mt-5 flex gap-10 md:gap-15">
                                 <div class="w-0.5 bg-[#DED6C7]"></div>
-                                <p class="max-w-95 text-[18px] leading-6 text-[#705F40]">
-                                    {{ $treatment['hero']['text'] }}
+                                <p class="max-w-100 text-[18px] leading-8 text-[#705F40]">
+                                    {!! $treatment['hero']['text'] !!}
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white">
-                        <div class="aspect-video sm:aspect-3/2 lg:aspect-video">
+                    <div class="">
+                        <div class="min-h-full">
                             <img src="{{ $treatment['hero']['image'] }}" alt="{{ $treatment['hero']['title'] }}"
-                                class="h-full w-full object-cover" loading="lazy" />
+                                class="object-cover w-full h-full" loading="lazy" />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="px-4 pb-12 pt-10 sm:px-6 sm:pb-14">
-            <div class="mx-auto max-w-7xl space-y-10">
-                @foreach ($treatment['sections'] as $s)
-                    <div class="grid items-stretch md:grid-cols-2 gap-8 p-8 sm:p-10">
-                        <div class="h-full">
-                            <div class="h-full min-h-55 overflow-hidden bg-black/5 sm:min-h-65  {{ $s['image_side'] }}">
-                                <img src="{{ $s['image'] }}" alt="" class="h-full w-full object-cover"
-                                    loading="lazy">
+        @if (!empty($treatment['sections'] ?? []))
+            <section class="px-4 pb-12 pt-10 sm:px-6 sm:pb-14">
+                <div class="mx-auto max-w-7xl space-y-10">
+                    @foreach ($treatment['sections'] as $s)
+                        <div class="grid items-stretch md:grid-cols-2 gap-8 md:gap-24 p-8 sm:p-10">
+                            <div class="">
+                                <div class="h-full overflow-hidden bg-black/5  {{ $s['image_side'] }}">
+                                    <img src="{{ $s['image'] }}" alt=""
+                                        class="h-full max-h-218.25 w-full object-cover" loading="lazy">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="flex flex-col">
-                            <h2 class="font-serif text-[39px] tracking-[0.06em] text-black/60 sm:text-[22px]">
-                                {{ $s['heading'] ?? '' }}
-                            </h2>
+                            <div class="flex flex-col">
+                                <h2 class="font-serif text-[39px] tracking-[0.06em] text-black/60 sm:text-[22px]">
+                                    {{ $s['heading'] ?? '' }}
+                                </h2>
 
-                            <div class="mt-4 h-px w-full bg-black/10"></div>
+                                <div class="mt-10 h-px w-full bg-black/10"></div>
 
-                            <div class="mt-6 text-[18px] leading-6 text-black/45">
-                                @if ($s['content_type'] === 'bullets')
-                                    <ul class="space-y-4">
-                                        @foreach ($s['bullets'] ?? [] as $b)
-                                            <li>
-                                                <span class="font-medium text-black/55">{{ $b['title'] ?? '' }}:</span>
-                                                <span>{{ $b['text'] ?? '' }}</span>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                @elseif ($s['content_type'] === 'ordered')
-                                    <ol class="space-y-3 pl-5">
-                                        @foreach ($s['ordered'] ?? [] as $idx => $line)
-                                            <li class="list-decimal">
-                                                {{ $line }}
-                                            </li>
-                                        @endforeach
-                                    </ol>
-                                @else
-                                    <div
-                                        class="prose prose-sm max-w-none prose-p:leading-6 prose-p:text-black/45 prose-li:text-black/45 prose-strong:text-black/55">
-                                        {!! $s['wysiwyg'] ?? '' !!}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </section>
-
-        <section class="px-4 pb-12 sm:px-6 sm:pb-14">
-            <div class="mx-auto max-w-400 overflow-hidden bg-[#efeae2] flex justify-center">
-                <div class="grid gap-10 px-8 py-10 sm:px-10 sm:py-12 lg:grid-cols-3 max-w-7xl">
-                    @foreach ($treatments['info_3col'] ?? [] as $col)
-                        <div class="flex flex-col justify-between">
-                            <h3 class="font-serif text-[39px] tracking-[0.06em] text-black/60">
-                                {{ $col['title'] ?? '' }}
-                            </h3>
-                            <div>
-                                <div class="mt-4 h-px w-full bg-white"></div>
-
-                                <div class="mt-6 whitespace-pre-line text-[18px] leading-6 text-black/45">
-                                    {{ $col['text'] ?? '' }}
+                                <div class="mt-10 text-[18px] leading-6 text-black/45">
+                                    @if ($s['content_type'] === 'bullets')
+                                        <ul class="space-y-6">
+                                            @foreach ($s['bullets'] ?? [] as $b)
+                                                <li class="">
+                                                    <span class="font-medium text-black/55">{{ $b['title'] ?? '' }}</span>
+                                                    <span>{{ $b['text'] ?? '' }}</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @elseif ($s['content_type'] === 'ordered')
+                                        <ol class="space-y-7 pl-5">
+                                            @foreach ($s['ordered'] ?? [] as $idx => $line)
+                                                <li class="list-decimal">
+                                                    {!! $line !!}
+                                                </li>
+                                            @endforeach
+                                        </ol>
+                                    @else
+                                        <div
+                                            class="prose prose-sm max-w-none prose-p:leading-6 prose-p:text-black/45 prose-li:text-black/45 prose-strong:text-black/55">
+                                            {!! $s['wysiwyg'] !!}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
+        @php
+            $infoColumns = array_filter(
+                $treatments['info_3col'] ?? [],
+                fn($col) => !empty(trim((string) ($col['title'] ?? ''))) || !empty(trim((string) ($col['text'] ?? ''))),
+            );
+        @endphp
+        @if (!empty($infoColumns))
+            <section class="px-4 pb-12 sm:px-6 sm:pb-14">
+                <div class="mx-auto max-w-400 overflow-hidden bg-[#efeae2] flex justify-center">
+                    <div class="flex gap-10 px-8 py-10 sm:px-10 sm:py-12 max-w-7xl">
+                        @foreach ($infoColumns as $col)
+                            <div class="flex flex-col flex-1">
+                                <h3 class="font-serif text-[39px] tracking-[0.06em] text-black/60 leading-[1.15] min-h-22">
+                                    {{ $col['title'] ?? '' }}
+                                </h3>
+                                <div>
+                                    <div class="mt-4 h-px w-full bg-white"></div>
 
-        <section class="px-4 pb-16 sm:px-6 sm:pb-20">
+                                    <div class="mt-6 whitespace-pre-line text-[18px] leading-6 text-black/45">
+                                        {!! $col['text'] ?? '' !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        <section class="px-4 pb-16 sm:px-6 sm:pb-20 mt-5">
             <div class="mx-auto max-w-7xl space-y-20">
                 @foreach ($treatments['pricing_blocks']['blocks'] as $block)
                     @php

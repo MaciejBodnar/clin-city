@@ -16,7 +16,7 @@
 
                             </h1>
 
-                            <div class="mt-5 flex gap-15">
+                            <div class="mt-5 flex gap-10 md:gap-15">
                                 <div class="w-0.5 bg-[#DED6C7]"></div>
                                 <p class="max-w-95 text-[18px] leading-6 text-[#705F40]">
                                     <?php echo e($team['hero']['description']); ?>
@@ -39,7 +39,7 @@
         <section class="px-4 pb-16 pt-12 sm:px-6 sm:pb-40">
             <div class="mx-auto max-w-7xl">
                 <div class="mb-22 flex flex-col gap-6">
-                    <h2 class="shrink-0 font-serif text-[#705F40] sm:text-[48px]">
+                    <h2 class="shrink-0 font-serif text-[#705F40] text-[48px]">
                         <?php echo e($team['sections']['team_heading']); ?>
 
                     </h2>
@@ -141,25 +141,27 @@
 
                 <div class="sm:flex sm:items-start">
                     <div class="mt-3 w-full text-center sm:ml-4 sm:mt-0 sm:text-left">
-                        <div class="inline-flex gap-25">
-                            <div class="mx-auto h-63.75 w-63.75 overflow-hidden rounded-full shrink-0 bg-black/5">
+                        <div class="flex flex-col md:flex-row gap-5 md:gap-25">
+                            <div
+                                class="mx-auto h-50 w-50 md:h-63.75 md:w-63.75 overflow-hidden rounded-full shrink-0 bg-black/5">
                                 <img id="modal-image" src="" alt=""
                                     class="h-full w-full object-cover text-transparent">
                             </div>
 
                             <div>
-                                <h1 class="mt-3 uppercase font-serif text-[48px] tracking-widest text-[#705F40] sm:text-[40px]"
+                                <h1 class="mt-3 uppercase font-serif text-[30px] md:text-[48px] tracking-widest text-[#705F40] sm:text-[40px]"
                                     id="modal-title">
                                     MEET THE TEAM
                                 </h1>
-                                <p class="text-[18px] tracking-[0.28em] text-[#C7B276] uppercase" id="modal-role">
+                                <p class="text-[14px] md:text-[18px] tracking-[0.28em] text-[#C7B276] uppercase"
+                                    id="modal-role">
                                     Dr William Wong
                                 </p>
 
 
-                                <div class="mt-5 flex gap-15">
+                                <div class="mt-5 flex gap-5 md:gap-15">
                                     <div class="w-0.5 bg-[#DED6C7]"></div>
-                                    <p class="max-w- text-[18px] leading-6 text-[#705F40]" id="modal-bio">
+                                    <p class="max-w- text-[18px] leading-8 text-[#705F40]" id="modal-bio">
                                         Where your aesthetic journey to excellence starts with our skilled team.
                                         Guided by leaders in cosmetic and aesthetic treatments, our committed experts are
                                         here

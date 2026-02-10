@@ -9,13 +9,12 @@
     <section>
         <div class="mx-auto max-w-7xl px-4 pb-20 pt-12 sm:px-6 sm:pt-14">
             <div class="bg-transparent">
-                <h1 class="font-serif text-[42px] tracking-widest text-black/60 sm:text-[56px]">
-                    {{ $contact['page']['title'] }}</h1>
+                <h1 class="font-serif text-[42px] tracking-widest uppercase text-black/60 sm:text-[56px]">
+                    {{ $contact['page']['title'] }}
                 </h1>
 
-                <p class="mt-4 max-w-3xl text-[13px] leading-7 text-black/45">
-                    Interested in working together? Fill out some info and we will be in touch shortly!
-                    We can't wait to hear from you!
+                <p class="mt-4 indent-8 text-[18px] leading-7 text-black/45">
+                    {{ $contact['page']['text'] }}
                 </p>
 
                 <div class="mt-12">
@@ -123,7 +122,6 @@
         .contact-form-skin form {
             display: grid;
             gap: 22px;
-            max-width: 980px;
         }
 
         @media (min-width: 768px) {

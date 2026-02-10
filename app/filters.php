@@ -19,6 +19,16 @@ add_filter('excerpt_more', function () {
  * Handle custom routes.
  */
 add_action('template_redirect', function () {
+    $frontPageId = (int) get_option('page_on_front');
+    if (
+        is_front_page() &&
+        $frontPageId > 0 &&
+        get_page_template_slug($frontPageId) === 'welcome-page.blade.php'
+    ) {
+        echo \Roots\view('welcome-page')->render();
+        exit;
+    }
+
     $route = get_query_var('clin_route');
 
     if ($route === 'welcome') {

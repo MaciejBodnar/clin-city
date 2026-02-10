@@ -246,10 +246,9 @@
                         </a>
 
                         <div class="w-full max-w-6xl">
-                            <div
-                                class="relative hidden md:flex items-center justify-between gap-6 px-4 py-4 w-full sm:px-6">
-                                <nav class="relative">
-                                    <ul class="flex flex-wrap items-center gap-x-8 gap-y-2 uppercase text-black/55">
+                            <div class="hidden md:flex items-center justify-between gap-6 px-4 py-4 w-full sm:px-6">
+                                <nav class="">
+                                    <ul class="menu flex flex-wrap items-center gap-x-8 gap-y-2 uppercase text-black/55">
                                         <?php $__currentLoopData = $top; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php
                                                 $id = (int) $item->ID;
@@ -265,32 +264,48 @@
                                             ?>
 
                                             <li class="group static">
-                                                <a href="<?php echo e($url); ?>"
-                                                    class="relative inline-flex items-center py-2 transition hover:text-black/75 <?php echo e($isCurrent ? 'text-black/75' : ''); ?>">
-                                                    <?php echo e($title); ?>
+                                                <?php if($k === 'treatments' || $k === 'collaborate'): ?>
+                                                    <div
+                                                        class="w-full relative inline-flex items-center py-2 transition hover:text-black/75 justify-center <?php echo e($isCurrent ? 'text-black/75' : ''); ?>">
+                                                        <?php echo e($title); ?>
 
+                                                        <?php if($openable): ?>
+                                                            <span
+                                                                class="items-center absolute -bottom-7 text-[#705F40] left-1/2 hidden group-hover:block group-focus-within:block pt-10 pr-10 <?php echo e($isCurrent ? 'block' : ''); ?>">
+                                                                &#9206;
+                                                            </span>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                <?php else: ?>
+                                                    <a href="<?php echo e($url); ?>"
+                                                        class="w-full relative inline-flex items-center py-2 transition hover:text-black/75 justify-center <?php echo e($isCurrent ? 'text-black/75' : ''); ?>">
+                                                        <?php echo e($title); ?>
 
-                                                    <?php if($openable): ?>
-                                                        <span
-                                                            class="pointer-events-none absolute -bottom-4.5 left-1/2 hidden h-0 w-0 -translate-x-1/2
-                     border-l-8 border-r-8 border-t-8
-                     border-l-transparent border-r-transparent border-t-[#d7cfbf]
-                     group-hover:block group-focus-within:block <?php echo e($isCurrent ? 'block' : ''); ?>"></span>
-                                                    <?php endif; ?>
-                                                </a>
+                                                        <?php if($openable): ?>
+                                                            <span
+                                                                class="items-center absolute -bottom-7 text-[#705F40] left-1/2 hidden group-hover:block group-focus-within:block pt-10 pr-10 <?php echo e($isCurrent ? 'block' : ''); ?>">
+                                                                &#9206;
+                                                            </span>
+                                                        <?php endif; ?>
+                                                    </a>
+                                                <?php endif; ?>
 
                                                 <?php if($openable): ?>
                                                     <div
-                                                        class="pointer-events-none absolute inset-x-0 top-full z-50 mt-5
-                   opacity-0 transition duration-200
-                   group-hover:pointer-events-auto group-hover:opacity-100
-                   group-focus-within:pointer-events-auto group-focus-within:opacity-100">
-                                                        <div class="mx-auto max-w-6xl px-4 sm:px-6">
-                                                            <div
-                                                                class="border border-black/10 bg-[#d7cfbf] px-10 py-10 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                                                        class="pointer-events-none absolute inset-x-0 min-w-full left-0 top-full z-50
+                                            opacity-0 transition duration-200
+                                            group-hover:pointer-events-auto group-hover:opacity-100
+                                            group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+                                                        <div
+                                                            class="w-full border-t-[#705F40] border-b-0 border-x-0 border-2 bg-[#d7cfbf]">
+                                                            <div class="mx-auto w-full max-w-6xl px-10 py-10">
 
                                                                 <?php if($k === 'treatments'): ?>
                                                                     <?php $cols = $children[$id] ?? []; ?>
+                                                                    <h3
+                                                                        class="font-serif mb-8 text-[42px] tracking-[0.08em] text-black/55">
+                                                                        TREATMENTS
+                                                                    </h3>
 
                                                                     <div class="grid gap-12 lg:grid-cols-3">
                                                                         <?php $__currentLoopData = $cols; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $col): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -300,6 +315,7 @@
                                                                             ?>
 
                                                                             <div>
+
                                                                                 <p
                                                                                     class="text-[13px] font-medium tracking-[0.12em] text-black/55">
                                                                                     <?php echo e($col->title); ?>
@@ -307,11 +323,10 @@
                                                                                 </p>
 
                                                                                 <ul
-                                                                                    class="mt-5 space-y-3 text-[14px] tracking-[0.02em] text-black/50">
+                                                                                    class="submenu-item mt-5 space-y-3 text-[14px] tracking-[0.02em] text-black/50">
                                                                                     <?php $__currentLoopData = $links; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lnk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                        <li class="flex items-start gap-3">
-                                                                                            <span
-                                                                                                class="mt-2 inline-block h-1 w-1 rounded-full bg-black/35"></span>
+                                                                                        <li
+                                                                                            class="flex items-start gap-3 submenu-item">
                                                                                             <a href="<?php echo e($lnk->url); ?>"
                                                                                                 class="hover:text-black/70 transition">
                                                                                                 <?php echo e($lnk->title); ?>
@@ -337,12 +352,12 @@
                                                                                 <a href="<?php echo e($b->url); ?>"
                                                                                     class="block">
                                                                                     <p
-                                                                                        class="text-[13px] font-semibold tracking-widest text-black/55">
+                                                                                        class="text-[16px] font-semibold tracking-widest text-black/55">
                                                                                         <?php echo e($b->title); ?>
 
                                                                                     </p>
                                                                                     <p
-                                                                                        class="mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
+                                                                                        class="ml-2 mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
                                                                                         <?php echo e($b->description); ?>
 
                                                                                     </p>
@@ -420,7 +435,7 @@
                                             </div>
 
                                             <div
-                                                class="bg-[#DED6C7] px-4 py-5 text-center flex-1 flex items-center justify-center min-h-12">
+                                                class="bg-[#DED6C7] px-4 py-5 text-center uppercase tracking-widest flex-1 flex items-center justify-center min-h-12">
                                                 <h3
                                                     class="text-[12px] sm:text-[18px] font-thin text-[#705F40] line-clamp-3">
                                                     <?php echo e($card['title']); ?>
@@ -505,8 +520,7 @@
 
                                 <div
                                     class="mt-12 hidden md:flex flex-wrap w-full items-center justify-center gap-x-12 gap-y-6 opacity-80">
-                                    <img src="<?php echo e($front['reviews']['brand_logos']); ?>" alt="Brand Logos"
-                                        class="" />
+                                    <img src="<?php echo e($front['map']['brands_logos']); ?>" alt="Brand Logos" class="" />
                                 </div>
                             </div>
                         </section>
@@ -516,7 +530,7 @@
                             <div class="mx-auto max-w-7xl">
                                 <div class="w-full max-w-6xl mx-auto border border-[#c7b27a] bg-white">
                                     <div class="relative">
-                                        <img src="<?php echo e(get_theme_file_uri('/resources/images/map.png')); ?>" alt="Map"
+                                        <img src="<?php echo e($front['map']['map_image']); ?>" alt="Map"
                                             class="w-full h-65 md:h-80 object-cover" />
 
                                         <div
@@ -528,12 +542,15 @@
                                         <div class="mx-auto w-10/12 border-t border-[#c7b27a]"></div>
 
                                         <div class="py-10 text-center">
-                                            <div class="inline-flex items-baseline gap-3">
-                                                <span class="text-xs tracking-[0.35em] text-[#c7b27a] font-medium">
-                                                    FIND US
-                                                </span>
+                                            <div class="flex flex-col md:flex-row justify-center items-center gap-3 px-4">
+                                                <a href="#"
+                                                    class="text-xs uppercase tracking-[0.35em] text-[#c7b27a] font-medium">
+                                                    <?php echo e($front['map']['address_label']); ?>
+
+                                                </a>
                                                 <span class="text-sm text-[#6b6b6b]">
-                                                    36 Great Titchfield Street, London, W1W 8BQ
+                                                    <?php echo e($front['map']['address_text']); ?>
+
                                                 </span>
                                             </div>
                                         </div>
@@ -542,77 +559,24 @@
                         </section>
                     </div>
                 </section>
-                
-                <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
-
-$__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames(([
-                    'title' => "LET'S START TODAY!",
-                    'subtitle' => 'OPENING HOURS',
-                    'hours' => [
-                        ['day' => 'Monday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Tuesday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Wednesday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Thursday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Friday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Sat', 'time' => '10:00am - 6:00pm'],
-                        ['day' => 'Sunday', 'time' => 'Closed'],
-                    ],
-                ]));
-
-foreach ($attributes->all() as $__key => $__value) {
-    if (in_array($__key, $__propNames)) {
-        $$__key = $$__key ?? $__value;
-    } else {
-        $__newAttributes[$__key] = $__value;
-    }
-}
-
-$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
-
-unset($__propNames);
-unset($__newAttributes);
-
-foreach (array_filter(([
-                    'title' => "LET'S START TODAY!",
-                    'subtitle' => 'OPENING HOURS',
-                    'hours' => [
-                        ['day' => 'Monday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Tuesday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Wednesday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Thursday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Friday', 'time' => '10:00am - 6:30pm'],
-                        ['day' => 'Sat', 'time' => '10:00am - 6:00pm'],
-                        ['day' => 'Sunday', 'time' => 'Closed'],
-                    ],
-                ]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
-    $$__key = $$__key ?? $__value;
-}
-
-$__defined_vars = get_defined_vars();
-
-foreach ($attributes->all() as $__key => $__value) {
-    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
-}
-
-unset($__defined_vars, $__key, $__value); ?>
-
                 <section class="hidden md:block px-4 pb-16 pt-10 sm:px-6 sm:pb-20">
                     <div class="mx-auto max-w-5xl">
                         <div class="grid grid-cols-1 items-start gap-20 md:grid-cols-2">
                             <div>
                                 <h2 class="text-[#6a5a40] uppercase text-4xl md:text-5xl font-light tracking-wide">
-                                    Let's start today!
+                                    <?php echo e($front['opening_hours']['title']); ?>
+
                                 </h2>
 
                                 <div class="mt-6 uppercase text-[#c7b27a] text-xs tracking-[0.45em]">
-                                    Opening hours
+                                    <?php echo e($front['opening_hours']['subtitle']); ?>
+
                                 </div>
                             </div>
 
                             <div class="w-full">
                                 <dl class="ml-10 space-y-2 text-[#7a6b55]">
-                                    <?php $__currentLoopData = $hours; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $front['opening_hours']['hours']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="grid grid-cols-2 gap-6 justify-between">
                                             <dt class="text-base font-normal">
                                                 <?php echo e($row['day']); ?>

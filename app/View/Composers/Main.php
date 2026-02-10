@@ -29,6 +29,7 @@ class Main extends Composer
             'about' => $this->getAboutData(),
             'reviews' => $this->getReviewsData(),
             'map' => $this->getMapData(),
+            'opening_hours' => $this->getOpeningHoursData(),
         ];
     }
 
@@ -194,25 +195,63 @@ class Main extends Composer
             'shortcode' => $this->getAcfFieldSafe('front_reviews_shortcode', false, '[trustindex no-registration=google]'),
             'button_text' => $this->getAcfFieldSafe('front_reviews_button_text', false, 'READ MORE'),
             'button_url' => $this->formatUrl($this->getAcfFieldSafe('front_reviews_button_url', false, '/reviews/')),
-            'brand_logos' => $this->getAcfImageSafe(
-                'front_reviews_brand_logos',
-                false,
-                'full',
-                get_theme_file_uri('/resources/images/brands.png')
-            ),
         ];
     }
 
     private function getMapData()
     {
         return [
-            'embed' => $this->getAcfFieldSafe('front_map_embed', false, ''), // iframe OR shortcode
+            'brands_logos' => $this->getAcfImageSafe(
+                'front_map_brand_logos',
+                false,
+                'full',
+                get_theme_file_uri('/resources/images/brands.png')
+            ),
+            'map_image'  => $this->getAcfImageSafe(
+                'front_map_image',
+                false,
+                'full',
+                get_theme_file_uri('/resources/images/map.png')
+            ),
             'address_label' => $this->getAcfFieldSafe('front_map_label', false, 'FIND US'),
             'address_text' => $this->getAcfFieldSafe(
                 'front_map_address',
                 false,
                 '36 Great Titchfield Street, London, W1W 7BQ'
             ),
+        ];
+    }
+
+    private function getOpeningHoursData()
+    {
+        $fallback_hours = [
+            ['day' => 'Monday', 'time' => '10:00am - 6:30pm'],
+            ['day' => 'Tuesday', 'time' => '10:00am - 6:30pm'],
+            ['day' => 'Wednesday', 'time' => '10:00am - 6:30pm'],
+            ['day' => 'Thursday', 'time' => '10:00am - 6:30pm'],
+            ['day' => 'Friday', 'time' => '10:00am - 6:30pm'],
+            ['day' => 'Sat', 'time' => '10:00am - 6:00pm'],
+            ['day' => 'Sunday', 'time' => 'Closed'],
+        ];
+
+        $hours_rows = $this->getAcfFieldSafe('front_opening_hours', false, []);
+
+        $hours = [];
+        if (empty($hours_rows)) {
+            $hours = $fallback_hours;
+        } else {
+            foreach ($hours_rows as $row) {
+                $hours[] = [
+                    'day' => $row['day'] ?? '',
+                    'time' => $row['time'] ?? '',
+                ];
+            }
+        }
+
+        return [
+            'title' => $this->getAcfFieldSafe('front_opening_hours_title', false, "LET'S START TODAY!"),
+            'subtitle' => $this->getAcfFieldSafe('front_opening_hours_subtitle', false, 'OPENING HOURS'),
+            'hours' => $hours,
         ];
     }
 

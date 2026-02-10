@@ -4,6 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="<?php echo e(esc_attr(get_bloginfo('description'))); ?>">
+    <meta name="author" content="<?php echo e(esc_attr(get_bloginfo('name'))); ?>">
+    <meta name="keywords" content="clinic, wellness, health, lifestyle">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="<?php echo e(esc_attr(get_bloginfo('name'))); ?>">
+    <meta property="og:description" content="<?php echo e(esc_attr(get_bloginfo('description'))); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo e(esc_url(home_url('/'))); ?>">
     <?php (do_action('get_header')); ?>
     <?php (wp_head()); ?>
 
@@ -25,9 +33,10 @@
         <main id="main" class="main">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
-        <?php ($route = get_query_var('clin_route')); ?>
-        <?php if($route !== 'welcome'): ?>
-            <?php echo $__env->make('sections.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+        <?php if (! (is_page_template('welcome-page.blade.php'))): ?>
+            <?php $__env->startSection('footer'); ?>
+                <?php echo $__env->make('sections.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+            <?php echo $__env->yieldSection(); ?>
         <?php endif; ?>
 
 
