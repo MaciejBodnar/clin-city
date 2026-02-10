@@ -41,9 +41,16 @@
             <section class="px-4 pb-12 pt-10 sm:px-6 sm:pb-14">
                 <div class="mx-auto max-w-7xl space-y-10">
                     <?php $__currentLoopData = $treatment['sections']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="grid items-stretch md:grid-cols-2 gap-8 md:gap-24 p-8 sm:p-10">
-                            <div class="">
-                                <div class="h-full overflow-hidden bg-black/5  <?php echo e($s['image_side']); ?>">
+                        <?php
+                            $imageSide = ($s['image_side'] ?? 'left') === 'right' ? 'right' : 'left';
+                            $splitOrderClass =
+                                $imageSide === 'right'
+                                    ? 'md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1'
+                                    : '';
+                        ?>
+                        <div class="grid items-stretch md:grid-cols-2 gap-8 md:gap-24 p-8 sm:p-10 <?php echo e($splitOrderClass); ?>">
+                            <div class="<?php echo e($imageSide); ?>">
+                                <div class="h-full overflow-hidden bg-black/5">
                                     <img src="<?php echo e($s['image']); ?>" alt=""
                                         class="h-full max-h-218.25 w-full object-cover" loading="lazy">
                                 </div>
@@ -99,7 +106,7 @@
         <?php if(!empty($infoColumns)): ?>
             <section class="px-4 pb-12 sm:px-6 sm:pb-14">
                 <div class="mx-auto max-w-400 overflow-hidden bg-[#efeae2] flex justify-center">
-                    <div class="flex gap-10 px-8 py-10 sm:px-10 sm:py-12 max-w-7xl">
+                    <div class="flex flex-col md:flex-row gap-10 px-8 py-10 sm:px-10 sm:py-20 max-w-7xl">
                         <?php $__currentLoopData = $infoColumns; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $col): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="flex flex-col flex-1">
                                 <h3 class="font-serif text-[39px] tracking-[0.06em] text-black/60 leading-[1.15] min-h-22">
@@ -121,7 +128,7 @@
             </section>
         <?php endif; ?>
 
-        <section class="px-4 pb-16 sm:px-6 sm:pb-20 mt-5">
+        <section class="px-4 pb-16 sm:px-6 sm:pb-20 mt-20">
             <div class="mx-auto max-w-7xl space-y-20">
                 <?php $__currentLoopData = $treatments['pricing_blocks']['blocks']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $block): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php
@@ -158,7 +165,7 @@
 
                                 <div class="space-y-2 pt-6 text-[18px] text-black/45">
                                     <?php $__currentLoopData = $block['rows']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <div style="min-height: 50px; line-height: 50px;">
+                                        <div style="min-height: 50px; line-height: 50px;" class="text-nowrap">
                                             <?php echo e($r['label'] ?? ''); ?>
 
                                         </div>
@@ -169,7 +176,7 @@
                                     <div class="bg-[#f2efe9] px-6 py-6">
                                         <div class="space-y-2 text-center text-[18px] text-black/55">
                                             <?php $__currentLoopData = $block['rows']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <div style="min-height: 50px; line-height: 50px;">
+                                                <div style="min-height: 50px; line-height: 50px;" class="text-nowrap">
                                                     <?php echo e($r[$k] ?? ''); ?>
 
                                                 </div>
