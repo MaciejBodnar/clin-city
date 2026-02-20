@@ -9,7 +9,7 @@
                 @foreach ($footer['social'] as $s)
                     <a href="{{ $s['url'] }}" class="text-[34px] transition hover:text-[#bda66a]"
                         aria-label="{{ $s['label'] }}" target="_blank" rel="noopener">
-                        <i class="{{ $s['icon'] }}"></i>
+                        {!! $s['icon'] !!}
                     </a>
                 @endforeach
             </div>

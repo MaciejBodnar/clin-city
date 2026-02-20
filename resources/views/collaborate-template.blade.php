@@ -1,46 +1,29 @@
-<?php $__env->startSection('content'); ?>
+{{--
+  Template Name: Collaborate
+  Template Post Type: page
+--}}
+
+@extends('layouts.app')
+
+@section('content')
     <section>
         <div class="mx-auto max-w-7xl px-4 pb-20 pt-12 sm:px-6 sm:pt-14">
             <div class="bg-transparent">
                 <h1 class="font-serif text-[42px] tracking-widest uppercase text-black/60 sm:text-[56px]">
-                    <?php echo e($contact['page']['title']); ?>
-
+                    {{ $collaborate['page']['title'] }}
                 </h1>
 
-                <div
-                    class="w-full mt-6 bg-[#DED6C7] flex flex-col md:flex-row md:items-center justify-center px-6 py-10 gap-10 text-[#705F40]">
-                    <span class="flex gap-2 items-center">
-                        <p>Whatsapp us</p>
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <p><?php echo e($contact['info']['number']); ?></p>
-                    </span>
-                    <span class="flex gap-2 items-center">
-                        <i class="fa-solid fa-envelope-open"></i>
-                        <p><?php echo e($contact['info']['email']); ?></p>
-                    </span>
-                    <span class="flex gap-2 items-center">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p><?php echo e($contact['info']['address']); ?></p>
-                    </span>
-                </div>
-                <h2 class="font-serif text-[38px] mt-10 tracking-widest uppercase text-black/60">
-                    <?php echo e($contact['form']['title']); ?>
+                <p class="mt-4 indent-8 text-[18px] leading-7 text-black/45">
+                    {{ $collaborate['page']['text'] }}
+                </p>
 
-                </h2>
-                <div class="mt-8">
+                <div class="mt-12">
                     <div class="contact-form-skin">
-                        <?php echo do_shortcode('[contact-form-7 id="98d3aa4" title="Contact"]'); ?>
-
+                        {!! do_shortcode('[contact-form-7 id="6f91723" title="Contact form 1"]') !!}
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="mt-15 md:px-20 md-10">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8847.728378293401!2d-0.14261222092688655!3d51.516701360395764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2a620c2c9d%3A0x23407e1853fb43a1!2s36%20Great%20Titchfield%20St.%2C%20London%20W1W%208BQ%2C%20Wielka%20Brytania!5e0!3m2!1spl!2spl!4v1771580975345!5m2!1spl!2spl"
-            width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
     <style>
@@ -176,6 +159,4 @@
             padding: 10px 0 0;
         }
     </style>
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/wordpress/wp-content/themes/clin-city/resources/views/contact-template.blade.php ENDPATH**/ ?>
+@endsection

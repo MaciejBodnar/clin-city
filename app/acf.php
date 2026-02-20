@@ -231,8 +231,8 @@ add_action('acf/init', function () {
                         'key' => 'field_front_social_links_icon',
                         'label' => 'Icon class',
                         'name' => 'icon',
-                        'type' => 'text',
-                        'instructions' => 'Font Awesome class, e.g. "fa-brands fa-instagram"',
+                        'type' => 'font-awesome',
+                        'instructions' => 'Font Awesome Icon',
                     ],
                     [
                         'key' => 'field_front_social_links_url',
@@ -274,6 +274,14 @@ add_action('acf/init', function () {
                 'default_value' => 1,
             ],
             [
+                'key' => 'field_front_wechat_url',
+                'label' => 'WeChat URL',
+                'name' => 'front_wechat_url',
+                'type' => 'text',
+                'instructions' => 'Example: https://wechat.com/yourpage',
+                'default_value' => '#',
+            ],
+            [
                 'key' => 'field_front_hours_label',
                 'label' => 'Hours Label',
                 'name' => 'front_hours_label',
@@ -313,6 +321,13 @@ add_action('acf/init', function () {
                 'name' => 'front_header_cta_text',
                 'type' => 'text',
                 'default_value' => 'BOOK YOUR CONSULTATION',
+            ],
+            [
+                'key' => 'field_front_header_cta_text_mobile',
+                'label' => 'Header CTA Text Mobile',
+                'name' => 'front_header_cta_text_mobile',
+                'type' => 'text',
+                'default_value' => 'BOOK NOW',
             ],
             [
                 'key' => 'field_front_header_cta_url',
@@ -604,7 +619,7 @@ add_action('acf/init', function () {
                         'key'   => 'field_welcome_social_icon',
                         'label' => 'Icon class',
                         'name'  => 'icon',
-                        'type'  => 'text',
+                        'type'  => 'font-awesome',
                         'instructions' => 'Example: fa-brands fa-facebook-f',
                     ],
                     [
@@ -646,6 +661,14 @@ add_action('acf/init', function () {
                 'type'  => 'true_false',
                 'ui'    => 1,
                 'default_value' => 1,
+            ],
+            [
+                'key'   => 'field_welcome_wechat_url',
+                'label' => 'WeChat URL',
+                'name'  => 'welcome_wechat_url',
+                'type'  => 'text',
+                'instructions' => 'Example: https://wechat.com/yourpage',
+                'default_value' => '#',
             ],
 
             [
@@ -1406,11 +1429,70 @@ add_action('acf/init', function () {
                 'label' => 'Contact Page Title',
                 'name' => 'page_title',
                 'type' => 'text',
+                'default_value' => 'CONTACT US',
+            ],
+            [
+                'key' => 'field_form_title',
+                'label' => 'Contact Form Title',
+                'name' => 'form_title',
+                'type' => 'text',
+                'default_value' => "Leave a message",
+            ],
+            [
+                'key' => 'field_phone_number',
+                'label' => 'Phone Number',
+                'name' => 'phone_number',
+                'type' => 'text',
+                'default_value' => "020 7323 9534",
+            ],
+            [
+                'key' => 'field_email_address',
+                'label' => 'Email Address',
+                'name' => 'email_address',
+                'type' => 'text',
+                'default_value' => "info@clinicity.com",
+            ],
+            [
+                'key' => 'field_address',
+                'label' => 'Address',
+                'name' => 'address',
+                'type' => 'text',
+                'default_value' => "36 Great Titchfield Street, London, W1W 8BQ",
+            ],
+        ],
+
+        'location' => [
+            [[
+                'param' => 'page_template',
+                'operator' => '==',
+                'value' => 'contact-template.blade.php',
+            ]],
+        ],
+
+        'menu_order' => 0,
+        'position' => 'acf_after_title',
+        'style' => 'seamless',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => ['the_content'],
+        'active' => true,
+        'description' => '',
+        'show_in_rest' => 0,
+    ));
+    acf_add_local_field_group(array(
+        'key' => 'group_collaborate_template',
+        'title' => 'Collaborate Template',
+        'fields' => [
+            [
+                'key' => 'field_collaborate_title',
+                'label' => 'Collaborate Page Title',
+                'name' => 'page_title',
+                'type' => 'text',
                 'default_value' => 'COLLABORATE',
             ],
             [
-                'key' => 'field_contact_text',
-                'label' => 'Contact Page Text',
+                'key' => 'field_collaborate_text',
+                'label' => 'Collaborate Page Text',
                 'name' => 'page_text',
                 'type' => 'text',
                 'default_value' => "Interested in working together? Fill out some info and we will be in touch shortly! We can't wait to hear from you!",
@@ -1421,7 +1503,7 @@ add_action('acf/init', function () {
             [[
                 'param' => 'page_template',
                 'operator' => '==',
-                'value' => 'contact-template.blade.php',
+                'value' => 'collaborate-template.blade.php',
             ]],
         ],
 
@@ -1536,7 +1618,7 @@ add_action('acf/init', function () {
                         'key'   => 'field_footer_social_icon',
                         'label' => 'Icon class',
                         'name'  => 'icon',
-                        'type'  => 'text',
+                        'type'  => 'font-awesome',
                         'instructions' => 'Example: fa-brands fa-facebook-f',
                     ],
                     [
@@ -1755,7 +1837,7 @@ add_action('acf/init', function () {
                         'key'   => 'field_header_social_icon',
                         'label' => 'Icon class',
                         'name'  => 'icon',
-                        'type'  => 'text',
+                        'type'  => 'font-awesome',
                         'instructions' => 'Example: fa-brands fa-facebook-f',
                     ],
                     [

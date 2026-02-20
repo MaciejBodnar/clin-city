@@ -37,9 +37,9 @@ class Welcome extends Composer
 
         if (empty($social_rows)) {
             $social = [
-                ['icon' => 'fa-brands fa-facebook-f', 'url' => '#'],
-                ['icon' => 'fa-brands fa-tiktok', 'url' => '#'],
-                ['icon' => 'fa-brands fa-instagram', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-facebook-f"></i>', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-tiktok"></i>', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-instagram"></i>', 'url' => '#'],
             ];
         } else {
             $social = [];
@@ -59,6 +59,7 @@ class Welcome extends Composer
             'whatsapp_tel' => $this->formatTel($this->getAcfFieldSafe('welcome_whatsapp_tel', false, '+442073239534')),
 
             'wechat_enabled' => (bool) $this->getAcfFieldSafe('welcome_wechat_enabled', false, 1),
+            'wechat_url' => $this->getAcfFieldSafe('welcome_wechat_url', false, '#123'),
 
             'hours_enabled' => (bool) $this->getAcfFieldSafe('welcome_hours_enabled', false, 1),
             'hours_label' => $this->getAcfFieldSafe('welcome_hours_label', false, 'Opening hours'),

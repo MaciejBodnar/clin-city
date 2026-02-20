@@ -13,7 +13,7 @@ use Roots\Acorn\Application;
 |
 */
 
-if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
+if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
 
@@ -58,3 +58,27 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+add_action('template_redirect', function () {
+    if (is_admin() || wp_doing_ajax() || (defined('REST_REQUEST') && REST_REQUEST)) return;
+    if (is_preview()) return;
+    if (is_user_logged_in()) return;
+
+    if (is_page('welcome')) {
+        $expiry = time() + YEAR_IN_SECONDS;
+        setcookie('clincity_entered', '1', $expiry, COOKIEPATH, COOKIE_DOMAIN, is_ssl(), true);
+        $_COOKIE['clincity_entered'] = '1';
+        return;
+    }
+
+    if (!is_front_page()) return;
+    if (!empty($_COOKIE['clincity_entered']) && $_COOKIE['clincity_entered'] === '1') return;
+    if (isset($_GET['nosplash']) && $_GET['nosplash'] === '1') return;
+
+    $expiry = time() + YEAR_IN_SECONDS;
+    setcookie('clincity_entered', '1', $expiry, COOKIEPATH, COOKIE_DOMAIN, is_ssl(), true);
+    $_COOKIE['clincity_entered'] = '1';
+
+    wp_safe_redirect(home_url('/welcome/'), 302);
+    exit;
+});

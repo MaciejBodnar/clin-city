@@ -16,7 +16,8 @@
                                 {{ $rooms['hero']['kicker'] }}
                             </p>
 
-                            <h1 class="mt-3 uppercase font-serif text-[48px] tracking-widest text-[#705F40] sm:text-[40px]">
+                            <h1
+                                class="mt-3 uppercase font-serif text-[32px] md:text-[48px] tracking-widest text-[#705F40] sm:text-[40px]">
                                 {{ $rooms['hero']['title'] }}
                             </h1>
 
@@ -52,7 +53,7 @@
                             <div>
                                 <p class="text-[18px] font-medium tracking-[0.12em] text-black/55">
                                     {{ $rooms['sections']['left_col_1_title'] }}</p>
-                                <ul class="mt-4 space-y-2 text-[18px] text-black/45">
+                                <ul class="menu mt-4 space-y-2 text-[18px] text-black/45">
                                     @foreach ($rooms['lists']['assets'] as $item)
                                         <li class="flex gap-3 items-center">
                                             <span class="inline-block h-1 w-1 rounded-full bg-[#c9b06f]"></span>
@@ -65,7 +66,7 @@
                             <div>
                                 <p class="text-[18px] font-medium tracking-[0.12em] text-black/55">
                                     {{ $rooms['sections']['left_col_2_title'] }}</p>
-                                <ul class="mt-4 space-y-2 text-[18px] text-black/45">
+                                <ul class="menu mt-4 space-y-2 text-[18px] text-black/45">
                                     @foreach ($rooms['lists']['key_features'] as $item)
                                         <li class="flex gap-3 items-center">
                                             <span class="inline-block h-1 w-1 rounded-full bg-[#c9b06f]"></span>
@@ -87,7 +88,7 @@
                             <div>
                                 <p class="text-[18px] font-medium tracking-[0.12em] text-black/55">
                                     {{ $rooms['sections']['right_col_1_title'] }}</p>
-                                <ul class="mt-4 space-y-2 text-[18px] text-black/45">
+                                <ul class="menu mt-4 space-y-2 text-[18px] text-black/45">
                                     @foreach ($rooms['lists']['additional_facilities'] as $item)
                                         <li class="flex gap-3 items-center">
                                             <span class="inline-block h-1 w-1 rounded-full bg-[#c9b06f]"></span>
@@ -100,7 +101,7 @@
                             <div>
                                 <p class="text-[18px] font-medium tracking-[0.12em] text-black/55">
                                     {{ $rooms['sections']['right_col_2_title'] }}</p>
-                                <ul class="mt-4 space-y-2 text-[18px] text-black/45">
+                                <ul class="menu mt-4 space-y-2 text-[18px] text-black/45">
                                     @foreach ($rooms['lists']['additional_services'] as $item)
                                         <li class="flex gap-3 items-center">
                                             <span class="inline-block h-1 w-1 rounded-full bg-[#c9b06f]"></span>

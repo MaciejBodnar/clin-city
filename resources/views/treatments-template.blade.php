@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="flex flex-col">
-                                <h2 class="font-serif text-[39px] tracking-[0.06em] text-black/60 sm:text-[22px]">
+                                <h2 class="font-serif text-[39px] tracking-[0.06em] text-black/60">
                                     {{ $s['heading'] ?? '' }}
                                 </h2>
 
@@ -70,9 +70,9 @@
                                     @if ($s['content_type'] === 'bullets')
                                         <ul class="space-y-6">
                                             @foreach ($s['bullets'] ?? [] as $b)
-                                                <li class="">
+                                                <li>
                                                     <span class="font-medium text-black/55">{{ $b['title'] ?? '' }}</span>
-                                                    <span>{{ $b['text'] ?? '' }}</span>
+                                                    <span class="tracking-[0.06em]">{!! $b['text'] ?? '' !!}</span>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -148,7 +148,7 @@
 
                                 @foreach ($cols as $label)
                                     <div
-                                        class="bg-[#f2efe9] pb-10 pt-8 text-center text-[16px] tracking-[0.08em] text-black/55">
+                                        class="bg-[#f2efe9] pb-10 pt-8 text-center text-[16px] uppercase tracking-[0.08em] text-black/55">
                                         {{ $label }}
                                     </div>
                                 @endforeach

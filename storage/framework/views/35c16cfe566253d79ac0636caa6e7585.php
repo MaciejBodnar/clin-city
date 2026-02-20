@@ -68,7 +68,7 @@
                                     <?php if($s['content_type'] === 'bullets'): ?>
                                         <ul class="space-y-6">
                                             <?php $__currentLoopData = $s['bullets'] ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <li class="">
+                                                <li>
                                                     <span class="font-medium text-black/55"><?php echo e($b['title'] ?? ''); ?></span>
                                                     <span><?php echo e($b['text'] ?? ''); ?></span>
                                                 </li>

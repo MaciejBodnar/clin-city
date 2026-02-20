@@ -81,8 +81,6 @@
         $k = preg_replace('/[^a-z0-9\-]/', '', $k);
         return $k;
     };
-
-    $ctaUrl = '/book/';
 @endphp
 
 <header class="relative" x-data="{ mobileMenuOpen: false }" @click.away="mobileMenuOpen = false"
@@ -91,7 +89,7 @@
         <div class="md:flex items-center gap-2 hidden">
             <span class="inline-flex items-center gap-6">
                 @foreach ($header['social'] ?? [] as $s)
-                    <a href="{{ $s['url'] }}"><i class="{{ $s['icon'] }}"></i></a>
+                    <a href="{{ $s['url'] }}">{!! $s['icon'] !!}</a>
                 @endforeach
             </span>
         </div>
@@ -139,7 +137,7 @@
             </div>
 
             <nav class="p-6 overflow-y-auto flex-1">
-                <ul class="space-y-1">
+                <ul class="menu space-y-1">
                     @foreach ($top as $item)
                         @php
                             $id = (int) $item->ID;
@@ -356,9 +354,9 @@
                 </nav>
 
 
-                <a href="{{ $ctaUrl }}"
+                <a href="{{ $header['button_url'] }}"
                     class="shrink-0 rounded-full bg-[#c9b06f] hover:bg-[#c9b06f]/70 px-10 py-3 text-white">
-                    BOOK YOUR CONSULTATION
+                    {{ $header['button_text'] }}
                 </a>
             </div>
         </div>

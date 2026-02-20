@@ -51,9 +51,9 @@ class Footer extends Composer
 
         if (empty($rows)) {
             $social = [
-                ['icon' => 'fa-brands fa-facebook-f', 'url' => '#'],
-                ['icon' => 'fa-brands fa-tiktok', 'url' => '#'],
-                ['icon' => 'fa-brands fa-instagram', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-facebook-f"></i>', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-tiktok"></i>', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-instagram"></i>', 'url' => '#'],
             ];
         } else {
             $social = [];
@@ -75,7 +75,7 @@ class Footer extends Composer
             ],
 
             'email' => [
-                'url'        => $this->formatUrl($this->getAcfFieldSafe('footer_email_url', 'option', 'info@clincity.com')),
+                'url'        => $this->getAcfFieldSafe('footer_email_url', 'option', 'info@clincity.com'),
             ],
 
             'address' => [

@@ -27,3 +27,11 @@ ul.menu li::before {
 ul li::before {
   content: "• ";
 }
+
+h1, h2, .heading {
+  font-family: "meno-banner", serif;
+}
+
+body, p, .text {
+  font-family: "basic-sans", sans-serif;
+}

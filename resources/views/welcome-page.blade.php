@@ -18,7 +18,7 @@
                         <span class="md:inline-flex items-center gap-6 hidden">
                             @foreach ($welcome['topbar']['social'] as $item)
                                 <a href="{{ $item['url'] }}">
-                                    <i class="{{ $item['icon'] }}"></i>
+                                    {!! $item['icon'] !!}
                                 </a>
                             @endforeach
                         </span>
@@ -31,7 +31,8 @@
                             <i class="fa-brands fa-whatsapp"></i>
                             <span class="ml-2 hidden md:inline-block">
                                 {{ $welcome['topbar']['whatsapp_phone_text'] }}</span></a>
-                        <a class="px-8 text-[30px] md:text-base">
+                        <a class="px-8 text-[30px] md:text-base" href="{{ $welcome['topbar']['wechat_url'] }}"
+                            target="_blank">
                             <i class="fab fa-weixin"></i></a>
                         <div class="hidden md:inline-block">
                             <span class="opacity-70">{{ $welcome['topbar']['hours_label'] }}</span>
@@ -89,7 +90,7 @@
                     <div class="relative border-t border-black/10 bg-white px-4 py-3 text-center text-black/50 sm:px-6">
                         © <?php echo date('Y'); ?> - The Central London Clinic Ltd. - D&amp;C with <span
                             class="text-[#C7B276]"><i class="fa-solid fa-heart" style="color: #c7b276;"></i></span> <a
-                            href="https://sltmedia.com" target="_blank">Sltmedia</a>
+                            href="https://sltmedia.com" target="_blank">{{ $welcome['footer']['brand_text'] }}</a>
                     </div>
                 </div>
             </section>

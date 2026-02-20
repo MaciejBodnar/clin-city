@@ -40,14 +40,14 @@ class Main extends Composer
         $social = [];
         if (empty($social_rows)) {
             $social = [
-                ['icon' => 'fa-brands fa-facebook-f', 'url' => '#'],
-                ['icon' => 'fa-brands fa-tiktok', 'url' => '#'],
-                ['icon' => 'fa-brands fa-instagram', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-facebook-f"></i>', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-tiktok"></i>', 'url' => '#'],
+                ['icon' => '<i class="fa-brands fa-instagram"></i>', 'url' => '#'],
             ];
         } else {
             foreach ($social_rows as $row) {
                 $social[] = [
-                    'icon' => $row['icon'] ?? 'fa-brands fa-facebook-f',
+                    'icon' => $row['icon'] ?? '<i class="fa-brands fa-facebook-f"></i>',
                     'url' => $this->formatUrl($row['url'] ?? '#'),
                 ];
             }
@@ -60,6 +60,7 @@ class Main extends Composer
             'whatsapp_phone' => $this->getAcfFieldSafe('front_whatsapp_phone', false, '020 7323 9534'),
             'whatsapp_tel' => $this->formatTel($this->getAcfFieldSafe('front_whatsapp_tel', false, '+442073239534')),
             'wechat_enabled' => (bool) $this->getAcfFieldSafe('front_wechat_enabled', false, 1),
+            'wechat_url' => $this->getAcfFieldSafe('front_wechat_url', false, '#'),
 
             'hours_label' => $this->getAcfFieldSafe('front_hours_label', false, 'Opening hours'),
             'hours_text' => $this->getAcfFieldSafe('front_hours_text', false, 'Mon-Sat, 10:00am-6:30pm'),
@@ -83,6 +84,7 @@ class Main extends Composer
             ),
 
             'cta_text' => $this->getAcfFieldSafe('front_header_cta_text', false, 'BOOK YOUR CONSULTATION'),
+            'cta_text_mobile' => $this->getAcfFieldSafe('front_header_cta_text_mobile', false, 'BOOK NOW'),
             'cta_url' => $this->formatUrl($this->getAcfFieldSafe('front_header_cta_url', false, '/book/')),
         ];
     }
@@ -214,6 +216,8 @@ class Main extends Composer
                 get_theme_file_uri('/resources/images/map.png')
             ),
             'address_label' => $this->getAcfFieldSafe('front_map_label', false, 'FIND US'),
+            'address_url' => $this->formatUrl($this->getAcfFieldSafe('front_map_address_url', false, 'https://www.google.pl/maps/place/Clinicity+London+-+Aesthetic+Clinic/@51.5176798,-0.1426417,17z/data=!3m2!4b1!5s0x48761b2a63cb6ce1:0xef0f04cf911ebf08!4m6!3m5!1s0x48761bd2cb10f481:0x60eda2c124c8234f!8m2!3d51.5176765!4d-0.1400668!16s%2Fg%2F11tjgcdr_t?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D')),
+
             'address_text' => $this->getAcfFieldSafe(
                 'front_map_address',
                 false,

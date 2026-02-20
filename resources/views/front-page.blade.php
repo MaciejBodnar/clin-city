@@ -121,7 +121,7 @@
                             <span class="hidden md:inline-flex items-center gap-6">
                                 @foreach ($front['topbar']['social'] as $social)
                                     <a href="{{ $social['url'] }}" class="hover:text-black/80">
-                                        <i class="{{ $social['icon'] }}"></i>
+                                        {!! $social['icon'] !!}
                                     </a>
                                 @endforeach
 
@@ -133,8 +133,9 @@
                                 <span>
                                     <i class="fa-brands fa-whatsapp fa-xl"></i>
                                     <i class="fab fa-weixin fa-xl"></i></span>
-                                <a class="bg-[#C7B276] rounded-full px-8 py-2 text-white">
-                                    Book now
+                                <a href="{{ $front['header']['cta_url'] }}"
+                                    class="bg-[#C7B276] rounded-full px-8 py-2 text-white">
+                                    {{ $front['header']['cta_text_mobile'] }}
                                 </a>
                             </span>
                         </div>
@@ -146,7 +147,7 @@
                                 <i class="fa-brands fa-whatsapp"></i>
                                 <span class="ml-2">
                                     {{ $front['topbar']['whatsapp_phone'] }}</span></a>
-                            <a class="px-8">
+                            <a class="px-8" href="{{ $front['topbar']['wechat_url'] }}">
                                 <i class="fab fa-weixin"></i></a>
                             <span class="opacity-70">{{ $front['topbar']['hours_label'] }}</span>
                             <i class="fa-regular fa-clock"></i>
@@ -173,7 +174,7 @@
                         </div>
 
                         <nav class="p-6 overflow-y-auto flex-1">
-                            <ul class="space-y-1">
+                            <ul class="menu space-y-1">
                                 @foreach ($top as $item)
                                     @php
                                         $id = (int) $item->ID;
@@ -420,32 +421,34 @@
 
                                 <div class="mt-10 grid gap-2.5 md:gap-8 sm:mt-13 grid-cols-2 lg:grid-cols-3">
                                     @foreach ($front['treatments']['cards'] as $card)
-                                        <article class="h-full flex flex-col">
-                                            <div class="aspect-video overflow-hidden bg-black/5">
-                                                <img src="{{ $card['image'] }}" alt="{{ $card['title'] }}"
-                                                    class="h-full w-full object-cover" loading="lazy" />
-                                            </div>
+                                        <a href="{{ $card['url'] }}">
+                                            <article class="h-full flex flex-col">
+                                                <div class="aspect-video overflow-hidden bg-black/5">
+                                                    <img src="{{ $card['image'] }}" alt="{{ $card['title'] }}"
+                                                        class="h-full w-full object-cover" loading="lazy" />
+                                                </div>
 
-                                            <div
-                                                class="bg-[#DED6C7] px-4 py-5 text-center uppercase tracking-widest flex-1 flex items-center justify-center min-h-12">
-                                                <h3
-                                                    class="text-[12px] sm:text-[18px] font-thin text-[#705F40] line-clamp-3">
-                                                    {{ $card['title'] }}
-                                                </h3>
-                                            </div>
+                                                <div
+                                                    class="bg-[#DED6C7] px-4 py-5 text-center uppercase tracking-widest flex-1 flex items-center justify-center min-h-12">
+                                                    <h3
+                                                        class="text-[12px] sm:text-[18px] font-thin text-[#705F40] line-clamp-3">
+                                                        {{ $card['title'] }}
+                                                    </h3>
+                                                </div>
 
-                                            <div class="px-6 pb-6 pt-8 text-center hidden sm:block">
-                                                <p
-                                                    class="mx-auto font-light max-w-[36ch] text-[18px] leading-5 text-black/45">
-                                                    {{ $card['text'] }}
-                                                </p>
+                                                <div class="px-6 pb-6 pt-8 text-center hidden sm:block">
+                                                    <p
+                                                        class="mx-auto font-light max-w-[36ch] text-[18px] leading-5 text-black/45">
+                                                        {{ $card['text'] }}
+                                                    </p>
 
-                                                <a href="{{ $card['url'] }}"
-                                                    class="mt-8 inline-flex items-center justify-center rounded-full border border-[#c9b06f] px-6 py-2 min-w-59 text-[#705F40] hover:bg-[#c9b06f]/10 transition">
-                                                    {{ $front['treatments']['button_text'] }}
-                                                </a>
-                                            </div>
-                                        </article>
+                                                    <button
+                                                        class="mt-8 inline-flex items-center justify-center rounded-full border border-[#c9b06f] px-6 py-2 min-w-59 text-[#705F40] hover:bg-[#c9b06f]/10 transition">
+                                                        {{ $front['treatments']['button_text'] }}
+                                                    </button>
+                                                </div>
+                                            </article>
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>
@@ -525,7 +528,7 @@
 
                                         <div class="py-10 text-center">
                                             <div class="flex flex-col md:flex-row justify-center items-center gap-3 px-4">
-                                                <a href="#"
+                                                <a href="{{ $front['map']['address_url'] }}" target="_blank"
                                                     class="text-xs uppercase tracking-[0.35em] text-[#c7b27a] font-medium">
                                                     {{ $front['map']['address_label'] }}
                                                 </a>

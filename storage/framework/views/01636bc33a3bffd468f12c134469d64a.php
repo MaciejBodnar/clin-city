@@ -10,7 +10,8 @@
                 <?php $__currentLoopData = $footer['social']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <a href="<?php echo e($s['url']); ?>" class="text-[34px] transition hover:text-[#bda66a]"
                         aria-label="<?php echo e($s['label']); ?>" target="_blank" rel="noopener">
-                        <i class="<?php echo e($s['icon']); ?>"></i>
+                        <?php echo $s['icon']; ?>
+
                     </a>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>

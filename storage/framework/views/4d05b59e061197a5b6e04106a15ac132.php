@@ -81,8 +81,6 @@
         $k = preg_replace('/[^a-z0-9\-]/', '', $k);
         return $k;
     };
-
-    $ctaUrl = '/book/';
 ?>
 
 <header class="relative" x-data="{ mobileMenuOpen: false }" @click.away="mobileMenuOpen = false"
@@ -91,7 +89,7 @@
         <div class="md:flex items-center gap-2 hidden">
             <span class="inline-flex items-center gap-6">
                 <?php $__currentLoopData = $header['social'] ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <a href="<?php echo e($s['url']); ?>"><i class="<?php echo e($s['icon']); ?>"></i></a>
+                    <a href="<?php echo e($s['url']); ?>"><?php echo $s['icon']; ?></a>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </span>
         </div>
@@ -139,7 +137,7 @@
             </div>
 
             <nav class="p-6 overflow-y-auto flex-1">
-                <ul class="space-y-1">
+                <ul class="menu space-y-1">
                     <?php $__currentLoopData = $top; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php
                             $id = (int) $item->ID;
@@ -368,9 +366,10 @@
                 </nav>
 
 
-                <a href="<?php echo e($ctaUrl); ?>"
+                <a href="<?php echo e($header['button_url']); ?>"
                     class="shrink-0 rounded-full bg-[#c9b06f] hover:bg-[#c9b06f]/70 px-10 py-3 text-white">
-                    BOOK YOUR CONSULTATION
+                    <?php echo e($header['button_text']); ?>
+
                 </a>
             </div>
         </div>

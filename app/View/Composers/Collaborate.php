@@ -4,7 +4,7 @@ namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
 
-class Contact extends Composer
+class Collaborate extends Composer
 {
     /**
      * List of views served by this composer.
@@ -12,7 +12,7 @@ class Contact extends Composer
      * @var array
      */
     protected static $views = [
-        'contact-template',
+        'collaborate-template',
     ];
 
     /**
@@ -23,47 +23,19 @@ class Contact extends Composer
     public function with()
     {
         return [
-            'contact' => $this->getContactData(),
+            'collaborate' => $this->getCollaborateData(),
         ];
     }
 
     /**
-     * Get contact page data from ACF fields
+     * Get collaborate page data from ACF fields
      *
      * @return array
      */
-    private function getContactData()
+    private function getCollaborateData()
     {
         return [
             'page' => $this->getPageData(),
-            'info' => $this->getInfoData(),
-            'form' => $this->getFormData(),
-        ];
-    }
-
-    /**
-     * Get contact info data from ACF fields
-     *
-     * @return array
-     */
-    private function getInfoData()
-    {
-        return [
-            'number' => $this->getAcfFieldSafe('phone_number', false, '020 7323 9534'),
-            'email' => $this->getAcfFieldSafe('email_address', false, 'info@clinicity.com'),
-            'address' => $this->getAcfFieldSafe('address', false, '36 Great Titchfield Street, London, W1W 8BQ'),
-        ];
-    }
-
-    /**
-     * Get form data from ACF fields
-     *
-     * @return array
-     */
-    private function getFormData()
-    {
-        return [
-            'title' => $this->getAcfFieldSafe('form_title', false, 'Leave a message'),
         ];
     }
 
@@ -75,7 +47,8 @@ class Contact extends Composer
     private function getPageData()
     {
         return [
-            'title' => $this->getAcfFieldSafe('page_title', false, 'Contact us'),
+            'title' => $this->getAcfFieldSafe('page_title', false, 'collaborate'),
+            'text' => $this->getAcfFieldSafe('page_text', false, "Interested in working together? Fill out some info and we will be in touch shortly! We can't wait to hear from you!"),
         ];
     }
     /**
