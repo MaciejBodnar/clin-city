@@ -307,7 +307,7 @@
                                                                         {{ $b->title }}
                                                                     </p>
                                                                     <p
-                                                                        class="mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
+                                                                        class="ml-2 mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
                                                                         {{ $b->description }}
                                                                     </p>
                                                                 </a>
