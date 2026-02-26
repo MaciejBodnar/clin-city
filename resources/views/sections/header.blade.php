@@ -100,7 +100,7 @@
         <div class="hidden md:flex items-center gap-2">
 
             <span class="opacity-70">{{ $header['whatsapp']['label'] }}</span>
-            <a class="hover:text-black/80 pl-2" href="tel:{{ $header['whatsapp']['tel'] }}">
+            <a class="hover:text-black/80 pl-2" href="{{ $header['whatsapp']['url'] }}">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span class="ml-2">{{ $header['whatsapp']['phone_text'] }}</span></a>
             <a class="px-8" href="{{ $header['wechat']['url'] }}">
@@ -272,7 +272,7 @@
 
                                                             <div>
                                                                 <p
-                                                                    class="text-[13px] font-medium tracking-[0.12em] text-black/55">
+                                                                    class="text-[13px] font-semibold tracking-[0.12em] text-black/55">
                                                                     {{ $col->title }}
                                                                 </p>
 
@@ -299,15 +299,15 @@
                                                             COLLABORATE
                                                         </h3>
 
-                                                        <div class="mt-8 grid gap-10 lg:grid-cols-4">
+                                                        <div class="mt-8 flex flex-col gap-6">
                                                             @foreach ($blocks as $b)
-                                                                <a href="{{ $b->url }}" class="block">
+                                                                <a href="{{ $b->url }}"
+                                                                    class="flex gap-4 items-center">
                                                                     <p
-                                                                        class="text-[13px] font-semibold tracking-widest text-black/55">
+                                                                        class="text-[16px] font-semibold tracking-widest text-black/55">
                                                                         {{ $b->title }}
                                                                     </p>
-                                                                    <p
-                                                                        class="ml-2 mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
+                                                                    <p class="text-[14px] leading-7 text-black/45">
                                                                         {{ $b->description }}
                                                                     </p>
                                                                 </a>

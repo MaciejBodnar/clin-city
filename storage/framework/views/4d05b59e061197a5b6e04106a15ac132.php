@@ -100,7 +100,7 @@
         <div class="hidden md:flex items-center gap-2">
 
             <span class="opacity-70"><?php echo e($header['whatsapp']['label']); ?></span>
-            <a class="hover:text-black/80 pl-2" href="tel:<?php echo e($header['whatsapp']['tel']); ?>">
+            <a class="hover:text-black/80 pl-2" href="<?php echo e($header['whatsapp']['url']); ?>">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span class="ml-2"><?php echo e($header['whatsapp']['phone_text']); ?></span></a>
             <a class="px-8" href="<?php echo e($header['wechat']['url']); ?>">
@@ -278,7 +278,7 @@
 
                                                             <div>
                                                                 <p
-                                                                    class="text-[13px] font-medium tracking-[0.12em] text-black/55">
+                                                                    class="text-[13px] font-semibold tracking-[0.12em] text-black/55">
                                                                     <?php echo e($col->title); ?>
 
                                                                 </p>
@@ -316,7 +316,7 @@
 
                                                                     </p>
                                                                     <p
-                                                                        class="mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
+                                                                        class="ml-2 mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
                                                                         <?php echo e($b->description); ?>
 
                                                                     </p>

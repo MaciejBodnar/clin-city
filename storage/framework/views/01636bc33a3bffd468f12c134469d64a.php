@@ -29,7 +29,7 @@
             <div class="space-y-3 leading-6">
                 <p>
                     <span class="opacity-75"><?php echo e($footer['whatsapp']['label']); ?></span>
-                    <a class="hover:text-black/80 pl-2 font-medium" href="tel:<?php echo e($footer['whatsapp']['tel']); ?>">
+                    <a class="hover:text-black/80 pl-2 font-medium" href="<?php echo e($footer['whatsapp']['url']); ?>">
                         <i class="fa-brands fa-whatsapp"></i>
                         <span class="ml-2">
                             <?php echo e($footer['whatsapp']['phone_text']); ?></span></a>

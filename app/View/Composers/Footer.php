@@ -71,7 +71,7 @@ class Footer extends Composer
             'whatsapp' => [
                 'label'      => $this->getAcfFieldSafe('footer_whatsapp_label', 'option', 'Whatsapp us'),
                 'phone_text' => $this->getAcfFieldSafe('footer_whatsapp_phone_text', 'option', '020 7323 9534'),
-                'tel'        => $this->getAcfFieldSafe('footer_whatsapp_tel', 'option', '+442073239534'),
+                'url'        => $this->getAcfFieldSafe('footer_whatsapp_url', 'option', 'https://wa.me/442073239534'),
             ],
 
             'email' => [

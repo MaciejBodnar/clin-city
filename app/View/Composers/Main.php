@@ -58,7 +58,7 @@ class Main extends Composer
 
             'whatsapp_label' => $this->getAcfFieldSafe('front_whatsapp_label', false, 'Whatsapp us'),
             'whatsapp_phone' => $this->getAcfFieldSafe('front_whatsapp_phone', false, '020 7323 9534'),
-            'whatsapp_tel' => $this->formatTel($this->getAcfFieldSafe('front_whatsapp_tel', false, '+442073239534')),
+            'whatsapp_url' => $this->getAcfFieldSafe('front_whatsapp_url', false, 'https://wa.me/442073239534'),
             'wechat_enabled' => (bool) $this->getAcfFieldSafe('front_wechat_enabled', false, 1),
             'wechat_url' => $this->getAcfFieldSafe('front_wechat_url', false, '#'),
 
@@ -202,13 +202,29 @@ class Main extends Composer
 
     private function getMapData()
     {
+        $brands_rows = $this->getAcfFieldSafe('front_brand_logos', false, []);
+
+        $brands = [];
+        if (empty($brands_rows)) {
+            $brands = [
+                ['image' => get_theme_file_uri('/resources/images/logos/clear-brilliant-logo-89x235.webp'), 'alt' => 'Clear Brillant'],
+                ['image' => get_theme_file_uri('/resources/images/logos/PCASKINLogo_Hero_170x@2x.png'), 'alt' => 'PCA Skin'],
+                ['image' => get_theme_file_uri('/resources/images/logos/Profhilo+blue+Logo+no+background.webp'), 'alt' => 'Profhilo'],
+                ['image' => get_theme_file_uri('/resources/images/logos/skinceuticals-logo-vector.png'), 'alt' => 'Skinceuticals'],
+                ['image' => get_theme_file_uri('/resources/images/logos/skinpen-by-crown-aesthetics.webp'), 'alt' => 'Skinpen'],
+                ['image' => get_theme_file_uri('/resources/images/logos/thermage-logo-160x78.png'), 'alt' => 'Thermage'],
+            ];
+        } else {
+            foreach ($brands_rows as $row) {
+                $brands[] = [
+                    'image' => $this->extractImageUrl($row['image'] ?? ''),
+                    'alt' => $row['alt'] ?? '',
+                ];
+            }
+        }
+
         return [
-            'brands_logos' => $this->getAcfImageSafe(
-                'front_map_brand_logos',
-                false,
-                'full',
-                get_theme_file_uri('/resources/images/brands.png')
-            ),
+            'brands_logos' => $brands,
             'map_image'  => $this->getAcfImageSafe(
                 'front_map_image',
                 false,

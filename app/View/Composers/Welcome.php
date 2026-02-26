@@ -56,7 +56,7 @@ class Welcome extends Composer
 
             'whatsapp_label' => $this->getAcfFieldSafe('welcome_whatsapp_label', false, 'Whatsapp us'),
             'whatsapp_phone_text' => $this->getAcfFieldSafe('welcome_whatsapp_phone_text', false, '020 7323 9534'),
-            'whatsapp_tel' => $this->formatTel($this->getAcfFieldSafe('welcome_whatsapp_tel', false, '+442073239534')),
+            'whatsapp_url' => $this->getAcfFieldSafe('welcome_whatsapp_url', false, 'https://wa.me/442073239534'),
 
             'wechat_enabled' => (bool) $this->getAcfFieldSafe('welcome_wechat_enabled', false, 1),
             'wechat_url' => $this->getAcfFieldSafe('welcome_wechat_url', false, '#123'),

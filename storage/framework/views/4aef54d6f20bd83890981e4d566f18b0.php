@@ -38,7 +38,7 @@
     </section>
     <section class="mt-15 md:px-20 md-10">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8847.728378293401!2d-0.14261222092688655!3d51.516701360395764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2a620c2c9d%3A0x23407e1853fb43a1!2s36%20Great%20Titchfield%20St.%2C%20London%20W1W%208BQ%2C%20Wielka%20Brytania!5e0!3m2!1spl!2spl!4v1771580975345!5m2!1spl!2spl"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13088.011403573828!2d-0.13899790384304!3d51.51403162242169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761bd2cb10f481%3A0x60eda2c124c8234f!2sClinicity%20London%20-%20Aesthetic%20Clinic!5e0!3m2!1sen!2sen!4v1771756895800!5m2!1sen!2sen"
             width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>

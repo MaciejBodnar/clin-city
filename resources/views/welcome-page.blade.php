@@ -27,7 +27,7 @@
                     <div class="items-center gap-2 hidden md:flex">
                         <span class="opacity-70 hidden md:flex">{{ $welcome['topbar']['whatsapp_label'] }}</span>
                         <a class="hover:text-black/80 pl-2 text-[30px] md:text-base"
-                            href="{{ $welcome['topbar']['whatsapp_tel'] }}">
+                            href="{{ $welcome['topbar']['whatsapp_url'] }}">
                             <i class="fa-brands fa-whatsapp"></i>
                             <span class="ml-2 hidden md:inline-block">
                                 {{ $welcome['topbar']['whatsapp_phone_text'] }}</span></a>

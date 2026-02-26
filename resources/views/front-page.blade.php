@@ -143,7 +143,7 @@
                         <div class="hidden md:flex items-center gap-2">
 
                             <span class="opacity-70">{{ $front['topbar']['whatsapp_label'] }}</span>
-                            <a class="hover:text-black/80 pl-2" href="tel:{{ $front['topbar']['whatsapp_tel'] }}">
+                            <a class="hover:text-black/80 pl-2" href="{{ $front['topbar']['whatsapp_url'] }}">
                                 <i class="fa-brands fa-whatsapp"></i>
                                 <span class="ml-2">
                                     {{ $front['topbar']['whatsapp_phone'] }}</span></a>
@@ -318,7 +318,7 @@
                                                                             <div>
 
                                                                                 <p
-                                                                                    class="text-[13px] font-medium tracking-[0.12em] text-black/55">
+                                                                                    class="text-[13px] font-semibold tracking-[0.12em] text-black/55">
                                                                                     {{ $col->title }}
                                                                                 </p>
 
@@ -346,16 +346,16 @@
                                                                             COLLABORATE
                                                                         </h3>
 
-                                                                        <div class="mt-8 grid gap-10 lg:grid-cols-4">
+                                                                        <div class="mt-8 flex flex-col gap-6">
                                                                             @foreach ($blocks as $b)
                                                                                 <a href="{{ $b->url }}"
-                                                                                    class="block">
+                                                                                    class="flex gap-4 items-center">
                                                                                     <p
                                                                                         class="text-[16px] font-semibold tracking-widest text-black/55">
                                                                                         {{ $b->title }}
                                                                                     </p>
                                                                                     <p
-                                                                                        class="ml-2 mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
+                                                                                        class="text-[14px] leading-7 text-black/45">
                                                                                         {{ $b->description }}
                                                                                     </p>
                                                                                 </a>
@@ -497,15 +497,26 @@
                                 <div class="ti-front-reviews mt-10 flex-nowrap">
                                     {!! do_shortcode('[trustindex no-registration=google]') !!}
                                 </div>
-                                <a href="{{ $front['reviews']['button_url'] }}"
+                                <a href="{{ $front['reviews']['button_url'] }}" target="_blank"
                                     class="mt-8 inline-flex items-center justify-center rounded-full border border-[#c9b06f] px-6 py-2 min-w-59 text-[#705F40] hover:bg-[#c9b06f]/10 transition">
 
                                     {{ $front['reviews']['button_text'] }}
                                 </a>
 
-                                <div
-                                    class="mt-12 hidden md:flex flex-wrap w-full items-center justify-center gap-x-12 gap-y-6 opacity-80">
-                                    <img src="{{ $front['map']['brands_logos'] }}" alt="Brand Logos" class="" />
+                                <div class="mt-12 hidden md:block w-full">
+                                    {{-- <img src="{{ $front['map']['brands_logos'] }}" alt="Brand Logos" class="" /> --}}
+                                    <div class="marquee-container">
+                                        <div class="marquee-track" id="track">
+                                            <div class="logo-slide">
+                                                @foreach ($front['map']['brands_logos'] as $brand)
+                                                    <div class="logo-wrapper">
+                                                        <img src="{{ $brand['image'] }}" alt="{{ $brand['alt'] }}"
+                                                            class="logo" />
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -515,8 +526,12 @@
                             <div class="mx-auto max-w-7xl">
                                 <div class="w-full max-w-6xl mx-auto border border-[#c7b27a] bg-white">
                                     <div class="relative">
-                                        <img src="{{ $front['map']['map_image'] }}" alt="Map"
-                                            class="w-full h-65 md:h-80 object-cover" />
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13088.011403573828!2d-0.13899790384304!3d51.51403162242169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761bd2cb10f481%3A0x60eda2c124c8234f!2sClinicity%20London%20-%20Aesthetic%20Clinic!5e0!3m2!1sen!2sen!4v1771756895800!5m2!1sen!2sen"
+                                            width="100%" height="320"
+                                            style="border:0; filter: grayscale(100%) brightness(1.05) contrast(1.1);"
+                                            allowfullscreen="" loading="lazy"
+                                            referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                                         <div
                                             class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent via-white/70 to-white">

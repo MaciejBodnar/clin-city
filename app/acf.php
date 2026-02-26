@@ -258,12 +258,12 @@ add_action('acf/init', function () {
                 'default_value' => '020 7323 9534',
             ],
             [
-                'key' => 'field_front_whatsapp_tel',
-                'label' => 'Whatsapp Tel (digits)',
-                'name' => 'front_whatsapp_tel',
-                'type' => 'text',
-                'instructions' => 'Example: +442073239534',
-                'default_value' => '+442073239534',
+                'key' => 'field_front_whatsapp_url',
+                'label' => 'Whatsapp URL',
+                'name' => 'front_whatsapp_url',
+                'type' => 'url',
+                'instructions' => 'Example: https://wa.me/442073239534',
+                'default_value' => 'https://wa.me/442073239534',
             ],
             [
                 'key' => 'field_front_wechat_enabled',
@@ -505,13 +505,31 @@ add_action('acf/init', function () {
                 'type' => 'tab',
                 'placement' => 'top',
             ],
-            //TODO  - BRAND IMAGE
             [
-                'key' => 'field_front_brands_logos',
-                'label' => 'Brands Logos',
-                'name' => 'front_brands_logos',
-                'type' => 'image',
-                'instructions' => 'Upload an image for the brands logos. You will output this in Blade.',
+                'key' => 'field_front_brand_logos',
+                'label' => 'Brand Logos',
+                'name' => 'front_brand_logos',
+                'type' => 'repeater',
+                'layout' => 'row',
+                'button_label' => 'Add Brand Logo',
+                'sub_fields' => [
+                    [
+                        'key' => 'field_front_brand_logos_image',
+                        'label' => 'Logo Image',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                        'preview_size' => 'thumbnail',
+                        'library' => 'all',
+                    ],
+                    [
+                        'key' => 'field_front_brand_logos_alt',
+                        'label' => 'Alt Text',
+                        'name' => 'alt',
+                        'type' => 'text',
+                        'instructions' => 'Alt text for the logo image',
+                    ],
+                ],
             ],
             [
                 'key' => 'field_front_map_image',
@@ -646,12 +664,12 @@ add_action('acf/init', function () {
                 'default_value' => '020 7323 9534',
             ],
             [
-                'key'   => 'field_welcome_whatsapp_tel',
-                'label' => 'WhatsApp Tel (raw)',
-                'name'  => 'welcome_whatsapp_tel',
+                'key'   => 'field_welcome_whatsapp_url',
+                'label' => 'WhatsApp URL',
+                'name'  => 'welcome_whatsapp_url',
                 'type'  => 'text',
-                'instructions' => 'Can be +4420... or tel:+4420... (your code will format it)',
-                'default_value' => '+442073239534',
+                'instructions' => 'Example: https://wa.me/442073239534',
+                'default_value' => 'https://wa.me/442073239534',
             ],
 
             [
@@ -1686,11 +1704,11 @@ add_action('acf/init', function () {
                 'default_value' => '020 7323 9534',
             ],
             [
-                'key'   => 'field_footer_whatsapp_tel',
-                'label' => 'Tel (raw)',
-                'name'  => 'footer_whatsapp_tel',
-                'type'  => 'text',
-                'default_value' => '+442073239534',
+                'key'   => 'field_footer_whatsapp_url',
+                'label' => 'URL',
+                'name'  => 'footer_whatsapp_url',
+                'type'  => 'url',
+                'default_value' => 'https://wa.me/442073239534',
             ],
 
             /**
@@ -1871,12 +1889,12 @@ add_action('acf/init', function () {
                 'default_value' => '020 7323 9534',
             ],
             [
-                'key'   => 'field_header_whatsapp_tel',
-                'label' => 'Tel (raw)',
-                'name'  => 'header_whatsapp_tel',
-                'type'  => 'text',
-                'instructions' => 'Example: +442073239534 (your code can format later if you want)',
-                'default_value' => '+442073239534',
+                'key'   => 'field_header_whatsapp_url',
+                'label' => 'URL',
+                'name'  => 'header_whatsapp_url',
+                'type'  => 'url',
+                'instructions' => 'Example: https://wa.me/442073239534',
+                'default_value' => 'https://wa.me/442073239534',
             ],
 
             // WECHAT
