@@ -125,15 +125,19 @@
                                 <button @click="mobileMenuOpen = !mobileMenuOpen" class="hover:text-black/75 transition">
                                     <i class="fa-solid fa-bars fa-xl"></i>
                                 </button>
-                                <span>
-                                    <i class="fa-brands fa-whatsapp fa-xl"></i>
-                                    <i class="fab fa-weixin fa-xl"></i></span>
-                                <a href="<?php echo e($front['header']['cta_url']); ?>"
-                                    class="bg-[#C7B276] rounded-full px-8 py-2 text-white">
-                                    <?php echo e($front['header']['cta_text_mobile']); ?>
+                                <span class="flex items-center gap-6">
+                                    <a href="<?php echo e($front['topbar']['whatsapp_url']); ?>" class="hover:text-black/80">
+                                        <i class="fa-brands fa-whatsapp fa-xl"></i>
+                                    </a>
+                                    <a href="<?php echo e($front['topbar']['wechat_url']); ?>" class="hover:text-black/80">
+                                        <i class="fab fa-weixin fa-xl"></i>
+                                    </a>
+                                    <a href="<?php echo e($front['header']['cta_url']); ?>"
+                                        class="bg-[#C7B276] rounded-full px-8 py-2 text-white">
+                                        <?php echo e($front['header']['cta_text_mobile']); ?>
 
-                                </a>
-                            </span>
+                                    </a>
+                                </span>
                         </div>
 
                         <div class="hidden md:flex items-center gap-2">

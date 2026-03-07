@@ -307,16 +307,16 @@
                                                             COLLABORATE
                                                         </h3>
 
-                                                        <div class="mt-8 grid gap-10 lg:grid-cols-4">
+                                                        <div class="mt-8 flex flex-col gap-6">
                                                             <?php $__currentLoopData = $blocks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                <a href="<?php echo e($b->url); ?>" class="block">
+                                                                <a href="<?php echo e($b->url); ?>"
+                                                                    class="flex gap-4 items-center">
                                                                     <p
-                                                                        class="text-[13px] font-semibold tracking-widest text-black/55">
+                                                                        class="text-[16px] font-semibold tracking-widest text-black/55">
                                                                         <?php echo e($b->title); ?>
 
                                                                     </p>
-                                                                    <p
-                                                                        class="ml-2 mt-3 max-w-[22ch] text-[14px] leading-7 text-black/45">
+                                                                    <p class="text-[14px] leading-7 text-black/45">
                                                                         <?php echo e($b->description); ?>
 
                                                                     </p>
