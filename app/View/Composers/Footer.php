@@ -85,6 +85,8 @@ class Footer extends Composer
             'logo_link' => home_url('/'),
             'quick_links' => $formatted_quick_links,
             'copyright_text' => $this->getAcfFieldSafe('footer_copyright_text', 'option', '© 2026 - The Central London Clinic Ltd. - D&C with'),
+            'qr_code' => $this->getAcfImageSafe('footer_qr_code', 'option', 'full', get_template_directory_uri() . '/resources/images/qr-code.png'),
+            'qr_code_text' => $this->getAcfFieldSafe('footer_qr_code_text', 'option', 'Our wechat id is: CliniCity_London'),
             'heart_icon_class' => $this->getAcfFieldSafe('footer_heart_icon_class', 'option', 'fa-solid fa-heart'),
             'slt_text' => $this->getAcfFieldSafe('footer_slt_text', 'option', 'Sltmedia'),
             'slt_link' => $this->getAcfFieldSafe('footer_slt_link', 'option', 'https://sltmedia.com/'),

@@ -1757,6 +1757,26 @@ add_action('acf/init', function () {
             ],
 
             /**
+             * QR Code
+             */
+            [
+                'key'   => 'field_footer_qr_code',
+                'label' => 'QR Code',
+                'name'  => 'footer_qr_code',
+                'type'  => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'library'       => 'all',
+            ],
+            [
+                'key'   => 'field_footer_qr_code_text',
+                'label' => 'QR Code Label',
+                'name'  => 'footer_qr_code_text',
+                'type'  => 'text',
+                'default_value' => 'Our wechat id is: CliniCity_London',
+            ],
+
+            /**
              * COPYRIGHT + BRANDING
              */
             [

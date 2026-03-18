@@ -17,7 +17,7 @@
 
         <div class="mt-8 h-0.5 w-full bg-[#bda66a]/35"></div>
 
-        <div class="max-w-6xl w-full mt-12 grid gap-10 text-black/55 lg:grid-cols-[1fr_1fr_1fr] max-md:text-center">
+        <div class="max-w-6xl w-full mt-12 grid gap-10 md:gap-14 text-black/55 lg:grid-cols-4 max-md:text-center">
             <div class="flex items-start justify-center lg:justify-start">
                 <a href="{{ $footer['logo_link'] }}" class="font-serif text-[42px] tracking-[0.18em] text-[#c9b06f]">
                     <img src="{{ $footer['logo'] }}" alt="CLINICITY" class="h-12" />
@@ -43,7 +43,7 @@
                 </p>
             </div>
 
-            <div class="space-y-3 leading-6">
+            <div class="space-y-3 leading-6 md:ml-10">
                 @foreach ($footer['quick_links'] as $p)
                     <p>
                         <a href="{{ $p['url'] }}" class="hover:text-black/70 transition">
@@ -51,6 +51,11 @@
                         </a>
                     </p>
                 @endforeach
+            </div>
+            <div class="flex flex-col items-center">
+                <img src="{{ $footer['qr_code'] }}" alt="QR Code"
+                    class="max-w-30! max-h-30! object-cover mx-auto lg:mx-0" />
+                <p class="text-center mt-2 text-sm text-black/50">{{ $footer['qr_code_text'] }}</p>
             </div>
         </div>
 
