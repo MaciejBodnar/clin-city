@@ -16,17 +16,23 @@
                 <div
                     class="w-full mt-6 bg-[#DED6C7] flex flex-col md:flex-row md:items-center justify-center px-6 py-10 gap-10 text-[#705F40]">
                     <span class="flex gap-2 items-center">
-                        <p>Whatsapp us</p>
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <p>{{ $contact['info']['number'] }}</p>
+                        <a href="{{ $contact['info']['whatsapp_url'] }}" class="flex gap-2 items-center">
+                            <p>Whatsapp us</p>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <p>{{ $contact['info']['number'] }}</p>
+                        </a>
                     </span>
                     <span class="flex gap-2 items-center">
-                        <i class="fa-solid fa-envelope-open"></i>
-                        <p>{{ $contact['info']['email'] }}</p>
+                        <a href="mailto:{{ $contact['info']['email'] }}" class="flex gap-2 items-center">
+                            <i class="fa-solid fa-envelope-open"></i>
+                            <p>{{ $contact['info']['email'] }}</p>
+                        </a>
                     </span>
                     <span class="flex gap-2 items-center">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p>{{ $contact['info']['address'] }}</p>
+                        <a href="{{ $contact['info']['address_url'] }}" target="_blank" class="flex gap-2 items-center">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>{{ $contact['info']['address'] }}</p>
+                        </a>
                     </span>
                 </div>
                 <h2 class="font-serif text-[38px] mt-10 tracking-widest uppercase text-black/60">

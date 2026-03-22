@@ -50,8 +50,10 @@ class Contact extends Composer
     {
         return [
             'number' => $this->getAcfFieldSafe('phone_number', false, '020 7323 9534'),
+            'whatsapp_url' => $this->getAcfFieldSafe('whatsapp_url', false, 'https://wa.me/442073239534'),
             'email' => $this->getAcfFieldSafe('email_address', false, 'info@clinicity.com'),
             'address' => $this->getAcfFieldSafe('address', false, '36 Great Titchfield Street, London, W1W 8BQ'),
+            'address_url' => $this->getAcfFieldSafe('address_url', false, 'https://www.google.pl/maps/place/Clinicity+London+-+Aesthetic+Clinic/@51.5176798,-0.1426417,17z/data=!3m2!4b1!5s0x48761b2a63cb6ce1:0xef0f04cf911ebf08!4m6!3m5!1s0x48761bd2cb10f481:0x60eda2c124c8234f!8m2!3d51.5176765!4d-0.1400668!16s%2Fg%2F11tjgcdr_t?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D'),
         ];
     }
 

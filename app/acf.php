@@ -1464,6 +1464,13 @@ add_action('acf/init', function () {
                 'default_value' => "020 7323 9534",
             ],
             [
+                'key' => 'field_whatsapp_url',
+                'label' => 'WhatsApp URL',
+                'name' => 'whatsapp_url',
+                'type' => 'text',
+                'default_value' => "https://wa.me/442073239534",
+            ],
+            [
                 'key' => 'field_email_address',
                 'label' => 'Email Address',
                 'name' => 'email_address',
@@ -1476,6 +1483,13 @@ add_action('acf/init', function () {
                 'name' => 'address',
                 'type' => 'text',
                 'default_value' => "36 Great Titchfield Street, London, W1W 8BQ",
+            ],
+            [
+                'key' => 'field_address_url',
+                'label' => 'Address URL',
+                'name' => 'address_url',
+                'type' => 'text',
+                'default_value' => "https://www.google.pl/maps/place/Clinicity+London+-+Aesthetic+Clinic/@51.5176798,-0.1426417,17z/data=!3m2!4b1!5s0x48761b2a63cb6ce1:0xef0f04cf911ebf08!4m6!3m5!1s0x48761bd2cb10f481:0x60eda2c124c8234f!8m2!3d51.5176765!4d-0.1400668!16s%2Fg%2F11tjgcdr_t?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D",
             ],
         ],
 
@@ -1735,6 +1749,13 @@ add_action('acf/init', function () {
                 'type'  => 'textarea',
                 'rows'  => 2,
                 'default_value' => '36 Great Titchfield Street, London, W1W 8BQ',
+            ],
+            [
+                'key'   => 'field_footer_address_url',
+                'label' => 'Address URL',
+                'name'  => 'footer_address_url',
+                'type'  => 'url',
+                'default_value' => 'https://www.google.pl/maps/place/Clinicity+London+-+Aesthetic+Clinic/@51.5176798,-0.1426417,17z/data=!3m2!4b1!5s0x48761b2a63cb6ce1:0xef0f04cf911ebf08!4m6!3m5!1s0x48761bd2cb10f481:0x60eda2c124c8234f!8m2!3d51.5176765!4d-0.1400668!16s%2Fg%2F11tjgcdr_t?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D',
             ],
 
             /**

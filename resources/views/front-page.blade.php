@@ -532,9 +532,7 @@
                                     <div class="relative">
                                         <iframe
                                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13088.011403573828!2d-0.13899790384304!3d51.51403162242169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761bd2cb10f481%3A0x60eda2c124c8234f!2sClinicity%20London%20-%20Aesthetic%20Clinic!5e0!3m2!1sen!2sen!4v1771756895800!5m2!1sen!2sen"
-                                            width="100%" height="320"
-                                            style="border:0; filter: grayscale(100%) brightness(1.05) contrast(1.1);"
-                                            allowfullscreen="" loading="lazy"
+                                            width="100%" height="320" allowfullscreen="" loading="lazy"
                                             referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                                         <div

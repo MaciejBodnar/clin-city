@@ -80,6 +80,7 @@ class Footer extends Composer
 
             'address' => [
                 'text'    => $this->getAcfFieldSafe('footer_address_text', 'option', '36 Great Titchfield Street, London, W1W 8BQ'),
+                'url'     => $this->getAcfFieldSafe('footer_address_url', 'option', 'https://www.google.pl/maps/place/Clinicity+London+-+Aesthetic+Clinic/@51.5176798,-0.1426417,17z/data=!3m2!4b1!5s0x48761b2a63cb6ce1:0xef0f04cf911ebf08!4m6!3m5!1s0x48761bd2cb10f481:0x60eda2c124c8234f!8m2!3d51.5176765!4d-0.1400668!16s%2Fg%2F11tjgcdr_t?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D'),
             ],
             'logo'  => $this->getAcfImageSafe('footer_logo_image', 'option', 'full', get_template_directory_uri() . '/resources/images/logo-menu.png'),
             'logo_link' => home_url('/'),

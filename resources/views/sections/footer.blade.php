@@ -39,7 +39,9 @@
                 </p>
 
                 <p class="font-medium">
-                    {{ $footer['address']['text'] }}
+                    <a class="hover:text-black/70" href="{{ $footer['address']['url'] }}" target="_blank">
+                        {{ $footer['address']['text'] }}
+                    </a>
                 </p>
             </div>
 

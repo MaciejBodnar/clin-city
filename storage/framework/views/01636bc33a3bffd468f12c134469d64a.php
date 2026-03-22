@@ -41,8 +41,10 @@
                 </p>
 
                 <p class="font-medium">
-                    <?php echo e($footer['address']['text']); ?>
+                    <a class="hover:text-black/70" href="<?php echo e($footer['address']['url']); ?>" target="_blank">
+                        <?php echo e($footer['address']['text']); ?>
 
+                    </a>
                 </p>
             </div>
 
